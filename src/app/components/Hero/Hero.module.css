@@ -1,151 +1,191 @@
+/* ==================================== */
+/* VARIABLES DE COLOR (Reutilizadas)  */
+/* ==================================== */
+/* Asegúrate que estas variables estén definidas en tu global.css o en un archivo central. */
+:root {
+  --primary-color: #4F46E5; /* Azul/Púrpura principal */
+  --primary-hover-color: #3e38c4;
+  --secondary-color: #1D1B3B; /* Color oscuro para botones/texto principal */
+  --secondary-hover-color: #2d2b5c;
+  --accent-blue: #3182ce;
+  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
+  --text-dark: #1a202c; /* Texto muy oscuro */
+  --text-medium: #374151; /* Texto secundario */
+  --text-light: #6b7280; /* Texto gris */
+  --background-color: #f9fafb; /* Fondo general de la app */
+  --card-background: #ffffff; /* Fondo de tarjetas */
+  --border-color: #e5e7eb; /* Bordes */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra más grande */
+  --badge-natural-bg: #E5E7EB; /* Reutilizando el color original del gradiente */
+}
+
 /* HERO GENERAL */
 .hero {
+  /* Fondo con el gradiente solicitado, usando variables */
   background: linear-gradient(
     135deg,
-    #E5E7EB 0%,
-    #4F46E5 40%,
-    #1D1B3B 100%
+    var(--badge-natural-bg) 0%, /* #E5E7EB */
+    var(--primary-color) 40%,   /* #4F46E5 */
+    var(--secondary-color) 100% /* #1D1B3B */
   );
-  color: #0f172a;
-  min-height: 100vh;
+  color: white; /* Texto blanco para asegurar contraste sobre el gradiente */
+  min-height: calc(100vh - 80px); /* Ajusta a la altura de la pantalla menos la Navbar */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 3rem 2.5rem; /* Padding más amplio y consistente */
   box-sizing: border-box;
   overflow: hidden;
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
 }
 
 /* CONTENEDOR INTERNO */
 .heroContainer {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1200px; /* Ancho máximo para el contenido */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem; /* Espacio más generoso entre columnas */
 }
 
 /* COLUMNA DE TEXTO */
 .heroContent {
-  background-color: #ffffff;
-  border-radius: 1.5rem;
-  padding: 3rem;
-  max-width: 640px;
+  background-color: var(--card-background); /* Fondo de tarjeta (blanco) */
+  border: 1px solid var(--border-color); /* Borde sutil */
+  border-radius: 1.5rem; /* Bordes redondeados */
+  padding: 3.5rem; /* Padding más generoso */
+  max-width: 600px; /* Ajuste el ancho máximo */
   width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg); /* Sombra más pronunciada */
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.5rem; /* Espaciado entre elementos */
   box-sizing: border-box;
 }
 
 /* ETIQUETA */
 .tag {
-  background-color: #E5E7EB;
-  color: #1D1B3B;
+  background-color: var(--accent-blue-light); /* Fondo azul claro */
+  color: var(--accent-blue); /* Texto azul */
   font-weight: 600;
-  font-size: 0.75rem;
-  font-family: 'Nexa', sans-serif;
-  padding: 0.3rem 0.75rem;
-  border-radius: 0.375rem;
+  font-size: 1rem; /* Tamaño más consistente */
+  padding: 0.4rem 1rem; /* Padding ajustado */
+  border-radius: 9999px; /* Forma de píldora */
   width: fit-content;
   text-transform: uppercase;
+  letter-spacing: 0.05em; /* Ligeramente más espaciado */
 }
 
 /* TÍTULO */
 .heroTitle {
-  font-size: 2.5rem;
-  font-weight: 800;
-  font-family: 'Nexa', sans-serif;
-  line-height: 1.2;
-  color: #0f172a;
+  font-size: 2.8rem; /* Tamaño de fuente más grande */
+  font-weight: 800; /* Más peso */
+  line-height: 1.25;
+  color: var(--text-dark); /* Color de texto oscuro para contraste con el fondo blanco de heroContent */
+  margin: 0;
 }
 
 /* TEXTO */
 .heroText {
-  color: #64748b;
+  color: var(--text-medium); /* Color de texto intermedio para contraste con el fondo blanco de heroContent */
   font-size: 1.1rem;
-  line-height: 1.6;
-  font-family: 'Roboto', sans-serif;
+  line-height: 1.7; /* Mayor espaciado entre líneas */
+  margin: 0;
 }
 
 /* BOTONES */
 .heroButtons {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  font-family: 'Roboto', sans-serif;
+  gap: 1.25rem; /* Espacio entre botones */
+  margin-top: 1.5rem; /* Margen superior */
 }
 
 /* BOTÓN PRINCIPAL */
 .primaryBtn {
-  background-color: #1D1B3B;
+  background-color: var(--secondary-color); /* Usamos secondary-color para el botón principal (color oscuro del gradiente) */
   color: white;
-  padding: 0.75rem 2rem;
+  padding: 0.9rem 2.25rem; /* Padding ajustado */
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem; /* Tamaño ligeramente más grande */
   border: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .primaryBtn:hover {
-  background-color: #161530;
+  background-color: var(--secondary-hover-color); /* Hover para secondary-color */
+  transform: translateY(-2px); /* Efecto de elevación */
 }
 
 /* BOTÓN SECUNDARIO */
 .secondaryBtn {
-  background-color: #E5E7EB;
-  color: #1D1B3B;
-  padding: 0.75rem 2rem;
+  background-color: var(--badge-natural-bg); /* Usamos el color claro del gradiente para el botón secundario */
+  color: var(--secondary-color); /* Texto oscuro para contraste */
+  padding: 0.9rem 2.25rem;
   border-radius: 9999px;
-  border: none;
+  border: 1px solid var(--border-color); /* Borde sutil */
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: background 0.2s ease;
+  gap: 0.6rem; /* Espacio entre icono y texto */
+  transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
 }
 
 .secondaryBtn:hover {
-  background-color: #d1d5db;
+  background-color: var(--border-color); /* Un gris más oscuro al hover */
+  border-color: var(--text-medium);
+  transform: translateY(-2px);
+}
+.secondaryBtn span {
+    font-size: 1.2em; /* Hace el ícono un poco más grande */
+    line-height: 1; /* Asegura el alineamiento */
 }
 
 /* IMAGEN */
 .heroImage {
   width: 100%;
-  max-width: 600px;
-  border-radius: 1rem;
-  box-shadow: 0 0 0 4px #1e1e4a;
+  max-width: 550px; /* Ajuste el ancho máximo */
+  border-radius: 1.5rem; /* Bordes redondeados */
+  box-shadow: 0 0 0 6px var(--primary-color), var(--shadow-lg); /* Doble sombra, una de color */
   box-sizing: border-box;
+  flex-shrink: 0; /* Evita que la imagen se encoja */
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) { /* Tablets y móviles grandes */
   .hero {
     padding: 3rem 1.5rem;
+    min-height: auto; /* Permite que el contenido determine la altura */
   }
 
   .heroContainer {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Apila las columnas */
+    align-items: center; /* Centra el contenido */
+    gap: 2rem; /* Reduce el espacio */
   }
 
   .heroContent {
-    width: 100%;
-    padding: 2rem;
+    max-width: 100%; /* Ocupa todo el ancho */
+    padding: 2.5rem; /* Ajusta padding */
+    text-align: center; /* Centra el texto */
+    order: 2; /* Pone el texto debajo de la imagen en móvil */
   }
 
   .tag {
-    font-size: 1.4rem;
+    margin: 0 auto 1rem; /* Centra la etiqueta */
   }
 
   .heroTitle {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .heroText {
@@ -153,23 +193,61 @@
   }
 
   .heroButtons {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: column; /* Apila los botones */
+    align-items: stretch; /* Estira los botones */
     width: 100%;
-    max-width: 500px;
+    max-width: 400px; /* Ancho máximo para los botones apilados */
+    margin: 1.5rem auto 0; /* Centra los botones */
     gap: 0.75rem;
   }
 
   .primaryBtn,
   .secondaryBtn {
     width: 100%;
-    justify-content: center;
+    justify-content: center; /* Centra el contenido del botón */
   }
 
   .heroImage {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 2rem;
-    display: block;
+    max-width: 90%; /* Ajusta el tamaño de la imagen */
+    margin-top: 0; /* Elimina margen superior */
+    order: 1; /* Pone la imagen encima del texto */
+  }
+}
+
+@media (max-width: 768px) { /* Móviles */
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .heroContent {
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+
+  .tag {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+
+  .heroText {
+    font-size: 0.95rem;
+  }
+
+  .heroButtons {
+    max-width: 320px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .heroImage {
+    border-radius: 1rem;
   }
 }

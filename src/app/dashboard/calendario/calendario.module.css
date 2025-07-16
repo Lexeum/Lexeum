@@ -1,0 +1,372 @@
+/* ==================================== */
+/* VARIABLES DE COLOR (Reutilizadas)  */
+/* ==================================== */
+
+:root {
+  --primary-color: #4F46E5;
+  --primary-hover-color: #3e38c4;
+  --secondary-color: #1D1B3B;
+  --secondary-hover-color: #2d2b5c;
+  --accent-blue: #3182ce;
+  --accent-blue-light: #e0e7ff; 
+  --text-dark: #1a202c;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-subtle: #9ca3af;
+  --background-color: #f9fafb;
+  --card-background: #ffffff;
+  --border-color: #e5e7eb;
+  --divider-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  /* COLORES DE EVENTOS */
+  --event-purple: #c7d2fe;
+  --event-blue: #bfdbfe;
+  --event-green: #d1fae5;
+  --event-yellow: #fef3c7;
+  --event-red: #fee2e2;
+  --event-text: #1f2937;
+}
+
+/* ==================================== */
+/* LAYOUT PRINCIPAL DEL CALENDARIO    */
+/* ==================================== */
+
+.calendarPageContainer {
+  padding: 2.5rem;
+  background-color: var(--background-color);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  min-height: calc(100vh - 80px);
+  box-sizing: border-box;
+}
+
+/* Encabezado principal de la página (Título y controles) */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  flex-shrink: 0; 
+}
+
+/* Contenedor de los botones de vista y agregar */
+.controlsGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; 
+}
+
+/* Grupo de botones de vista (Mes, Semana, Día) */
+.viewToggle {
+  display: flex;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-left: 0; 
+}
+
+.viewButton {
+  padding: 0.75rem 1.25rem;
+  background-color: transparent;
+  border: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewButton.active {
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.viewButton:not(.active):hover {
+  background-color: var(--background-color);
+}
+
+/* Botón de "Nuevo Evento" */
+.addEventButton {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.addEventButton:hover {
+  background-color: var(--primary-hover-color);
+}
+
+
+/* ==================================== */
+/* CALENDARIO PRINCIPAL (GRID)        */
+/* ==================================== */
+
+.calendarWrapper {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+}
+
+/* Navegación del mes/semana/día (central) */
+.calendarNavHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.monthYearDisplay {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: capitalize;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.navButtons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.navButton, .todayButton {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-medium);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.todayButton {
+  border-radius: 0.75rem;
+  width: auto;
+  padding: 0 1rem;
+}
+.navButton:hover, .todayButton:hover {
+  background-color: var(--border-color);
+  color: var(--text-dark);
+}
+
+/* Grid del calendario de días y eventos */
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Fila de días de la semana */
+.weekdaysRow {
+  display: contents;
+}
+.dayOfWeek {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  background-color: var(--background-color);
+}
+
+/* Celda de cada día (para Mes y Semana) */
+.dayCell {
+  min-height: 120px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-left: none;
+  position: relative;
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+}
+.dayCell:nth-child(7n+1) {
+  border-left: 1px solid var(--border-color);
+}
+
+.dayCell.today { background-color: var(--accent-blue-light); }
+.dayCell.inactive { background-color: #fcfdfe; }
+.dayCell.inactive .dayNumber { color: var(--text-subtle); }
+
+/* Número del día */
+.dayNumber {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+.dayCell.today .dayNumber { color: var(--primary-color); }
+
+/* Contenedor de eventos dentro de la celda */
+.eventsInDay {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Tarjeta de evento dentro de la celda */
+.eventCard {
+  background-color: var(--event-purple);
+  color: var(--event-text);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  line-height: 1.3;
+}
+.eventCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.eventTitle { font-weight: 600; display: block; }
+.eventTime { font-size: 0.8rem; color: rgba(31, 41, 55, 0.8); }
+.eventCard.purple { background-color: var(--event-purple); }
+.eventCard.blue { background-color: var(--event-blue); }
+.eventCard.green { background-color: var(--event-green); }
+.eventCard.yellow { background-color: var(--event-yellow); }
+.eventCard.red { background-color: var(--event-red); }
+
+/* ==================================== */
+/* ESTILOS ESPECÍFICOS DE LAS VISTAS  */
+/* ==================================== */
+
+/* Vista de Semana */
+.weekGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+/* Cabecera de día en vista de semana */
+.todayDayHeader {
+  color: var(--primary-color);
+}
+.dayNumberHeader {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+/* Contenedor de los eventos por día en vista de semana */
+.weekContent {
+  grid-column: 1 / -1; /* Ocupa todas las 7 columnas */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border-color);
+}
+.dayColumn {
+  min-height: 600px; /* Altura para ver la lista de eventos */
+  padding: 1rem;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+.dayColumn:last-child {
+  border-right: none;
+}
+/* Estilo de los eventos en las columnas de semana */
+.dayColumn .eventCard {
+  width: 100%;
+}
+
+
+/* Vista de Día */
+.dayView {
+  padding: 1.5rem;
+}
+.eventsInDayList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.eventCardList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==================================== */
+/* MODAL PARA AGREGAR EVENTO          *
+/* ==================================== */
+.modalBackdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+.modalContent { background-color: var(--card-background); padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); width: 100%; max-width: 550px; display: flex; flex-direction: column; gap: 1.5rem; animation: fadeInScale 0.3s ease-out; }
+@keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.modalHeader { display: flex; justify-content: space-between; align-items: center; }
+.modalTitle { font-size: 1.5rem; font-weight: 700; margin: 0; }
+.closeButton { background: none; border: none; font-size: 1.5rem; color: var(--text-light); cursor: pointer; }
+.modalForm { display: flex; flex-direction: column; gap: 1rem; }
+.formGroup { display: flex; flex-direction: column; gap: 0.5rem; }
+.formGroup label { font-size: 0.9rem; font-weight: 600; color: var(--text-medium); }
+.formGroup input, .formGroup textarea, .formGroup select { width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid var(--border-color); background-color: var(--background-color); font-size: 1rem; color: var(--text-dark); font-family: 'Inter', sans-serif; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.formGroup input:focus, .formGroup textarea:focus, .formGroup select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+.formGroup textarea { min-height: 100px; resize: vertical; }
+.modalActions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; }
+.modalButton { padding: 1rem 2rem; border-radius: 1rem; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background-color 0.2s ease; }
+.cancelButton { background-color: transparent; color: var(--text-medium); border: 1px solid var(--border-color); }
+.cancelButton:hover { background-color: var(--background-color); }
+.saveButton { background-color: var(--primary-color); color: white; border: none; }
+.saveButton:hover { background-color: var(--primary-hover-color); }
+
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) {
+  .calendarPageContainer { padding: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  .calendarPageContainer { padding: 1rem; }
+  .calendarWrapper { padding: 1.5rem; }
+  .pageHeader { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+  .controlsGroup { flex-direction: column; width: 100%; }
+  .viewToggle { width: 100%; }
+  .viewButton { flex: 1; text-align: center; }
+  .addEventButton { width: 100%; justify-content: center; }
+  .calendarNavHeader { flex-direction: column; gap: 0.75rem; }
+  .modalContent { padding: 1.5rem; border-radius: 1rem; }
+  .modalActions { flex-direction: column; gap: 0.5rem; }
+  .modalButton { width: 100%; }
+}

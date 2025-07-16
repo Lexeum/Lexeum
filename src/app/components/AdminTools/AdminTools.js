@@ -1,37 +1,63 @@
 'use client';
+import { useState } from 'react';
 import styles from './AdminTools.module.css';
-import { BiUser, BiShield, BiBarChartAlt2 } from 'react-icons/bi';
+
+const cards = [
+  {
+    title: 'Gestión de usuarios',
+    description: 'Crea y administra cuentas para todos los miembros de tu despacho legal.',
+    image: '/8304.jpg',
+  },
+  {
+    title: 'Roles y permisos',
+    description: 'Define roles personalizados con permisos específicos para cada tipo de usuario.',
+    image: '/8304.jpg',
+  },
+  {
+    title: 'Informes y analíticas',
+    description: 'Visualiza el rendimiento de tu equipo y la actividad de la plataforma.',
+    image: '/8304.jpg',
+  },
+];
 
 export default function AdminTools() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const mainCard = cards[activeIndex];
+  const sideCards = cards.filter((_, i) => i !== activeIndex);
+
   return (
     <section className={styles.adminTools}>
       <div className={styles.grid}>
-        {/* GRANDE a la izquierda */}
+        {/* Card principal activa */}
         <div className={`${styles.card} ${styles.main}`}>
-          <img src="/8304.jpg" alt="Usuarios" className={styles.bgImage} />
+          <img src={mainCard.image} alt={mainCard.title} className={styles.bgImage} />
           <div className={styles.overlay}>
-            <h3>Gestión de usuarios</h3>
-            <p>Crea y administra cuentas para todos los miembros de tu despacho legal.</p>
+            <h3>{mainCard.title}</h3>
+            <p>{mainCard.description}</p>
           </div>
         </div>
 
-        {/* STACK derecho */}
+        {/* Cards laterales */}
         <div className={styles.rightColumn}>
-          <div className={`${styles.card} ${styles.small}`}>
-            <img src="/8304.jpg" alt="Roles" className={styles.bgImage} />
-            <div className={styles.overlay}>
-              <h4>Roles y permisos</h4>
-              <p>Define roles personalizados con permisos específicos para cada tipo de usuario.</p>
-            </div>
-          </div>
+          {sideCards.map((card, i) => {
+            // Mapear a su índice original real
+            const actualIndex = cards.findIndex(c => c.title === card.title);
 
-          <div className={`${styles.card} ${styles.small}`}>
-            <img src="/8304.jpg" alt="Informes" className={styles.bgImage} />
-            <div className={styles.overlay}>
-              <h4>Informes y analíticas</h4>
-              <p>Visualiza el rendimiento de tu equipo y la actividad de la plataforma.</p>
-            </div>
-          </div>
+            return (
+              <div
+                key={card.title}
+                className={`${styles.card} ${styles.small}`}
+                onClick={() => setActiveIndex(actualIndex)}
+              >
+                <img src={card.image} alt={card.title} className={styles.bgImage} />
+                <div className={styles.overlay}>
+                  <h4>{card.title}</h4>
+                  <p>{card.description}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,130 +1,244 @@
+/* ==================================== */
+/* VARIABLES DE COLOR (Reutilizadas)  */
+/* ==================================== */
+:root {
+  --primary-color: #4F46E5; /* Azul/Púrpura principal */
+  --primary-hover-color: #3e38c4;
+  --secondary-color: #1D1B3B; /* Color oscuro para botones/texto principal */
+  --secondary-hover-color: #2d2b5c;
+  --accent-blue: #3182ce;
+  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
+  --text-dark: #1a202c; /* Texto muy oscuro */
+  --text-medium: #374151; /* Texto secundario */
+  --text-light: #6b7280; /* Texto gris */
+  --background-color: #f9fafb; /* Fondo general de la app */
+  --card-background: #ffffff; /* Fondo de tarjetas */
+  --border-color: #e5e7eb; /* Bordes */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* FEATURES SECTION GENERAL */
 .featuresSection {
-  padding: 4rem 2rem;
-  background-color: #ffffff;
-  color: #0f0f3e;
+  padding: 5rem 2.5rem; /* Padding más amplio y consistente */
+  background-color: var(--background-color); /* Fondo general de la app */
+  color: var(--text-dark); /* Color de texto general */
   text-align: center;
-  overflow-x: hidden;
+  overflow: hidden; /* Evita scroll lateral inesperado */
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  box-sizing: border-box;
 }
 
 .featuresHeader {
-  max-width: 768px;
-  margin: 0 auto 3rem auto;
+  max-width: 800px; /* Ancho máximo para el encabezado */
+  margin: 0 auto 4rem auto; /* Margen inferior ajustado */
 }
 
 .featuresTitle {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #1D1B3B;
-  font-family: 'Nexa', sans-serif;
-  margin-bottom: 0.5rem;
+  font-size: 2.2rem; /* Tamaño de fuente ajustado */
+  font-weight: 800; /* Peso de fuente más grueso */
+  color: var(--text-dark); /* Color de texto oscuro */
+  margin-bottom: 0.75rem; /* Espacio inferior */
+  line-height: 1.3;
 }
 
+/* Subtítulo, si se usa en el JSX */
 .featuresSubtitle {
-  color: #64748b;
-  font-size: 1rem;
+  color: var(--text-medium); /* Color de texto intermedio */
+  font-size: 1.05rem; /* Tamaño ligeramente ajustado */
   line-height: 1.6;
-  font-family: 'Roboto', sans-serif;
+  margin-top: 0.5rem;
 }
 
-/* Wrapper para scroll horizontal */
+/* Wrapper para scroll horizontal en móvil */
 .sliderWrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 1rem;
-  scrollbar-width: none;
+  overflow-x: auto; /* Permite scroll horizontal */
+  -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+  padding-bottom: 1.5rem; /* Espacio para la barra de scroll si es visible */
+  scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
 }
-
 .sliderWrapper::-webkit-scrollbar {
-  display: none;
+  display: none; /* Oculta la barra de scroll en WebKit */
 }
 
-/* Grid general */
+
+/* Grid de características */
 .featuresGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1280px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Ancho mínimo ajustado */
+  gap: 2.5rem; /* Espaciado entre tarjetas */
+  max-width: 1200px; /* Ancho máximo del grid */
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0; /* Ya no necesita padding, el sliderWrapper lo da */
 }
 
-/* Card completa */
+/* Card individual */
 .featureCard {
-  background-color: #ffffff;
-  border: 1px solid #E5E7EB;
-  border-radius: 1rem;
+  background-color: var(--card-background); /* Fondo de tarjeta */
+  border: 1px solid var(--border-color); /* Borde sutil */
+  border-radius: 1.25rem; /* Bordes más redondeados */
   overflow: hidden;
-  box-shadow: 0 0 0 1px #e5e7eb;
+  box-shadow: var(--shadow-md); /* Sombra estándar */
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  flex-grow: 1; /* Permite que la tarjeta crezca en el grid */
 }
 
 .featureCard:hover {
-  box-shadow: 0 10px 20px rgba(15, 15, 62, 0.1);
+  box-shadow: var(--shadow-lg); /* Sombra más grande al hover */
+  transform: translateY(-5px); /* Efecto de elevación */
 }
 
 /* Imagen superior */
 .featureImage {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-bottom: 1px solid #E5E7EB;
+  height: 200px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  border-bottom: 1px solid var(--border-color); /* Borde consistente */
 }
 
 /* Contenido dentro de la card */
 .featureContent {
-  padding: 1.5rem;
+  padding: 2rem; /* Padding generoso */
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Para que el contenido ocupe el espacio */
 }
 
-/* Título */
+/* Título de la característica */
 .featureTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.3rem; /* Tamaño más grande */
+  font-weight: 700; /* Más peso */
   margin-bottom: 0.75rem;
-  color: #1D1B3B;
-  font-family: 'Nexa', sans-serif;
+  color: var(--text-dark); /* Color de texto oscuro */
 }
 
-/* Descripción */
+/* Descripción de la característica */
 .featureDescription {
-  font-size: 0.95rem;
-  color: #475569;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  font-size: 1rem; /* Tamaño más consistente */
+  color: var(--text-medium); /* Color de texto intermedio */
+  line-height: 1.6;
+  margin-bottom: 1.25rem; /* Espacio inferior */
+  flex-grow: 1; /* Permite que la descripción crezca */
 }
 
 /* Link inferior */
 .featureLink {
   font-weight: 600;
-  font-size: 0.95rem;
-  color: #4F46E5;
+  font-size: 1rem; /* Tamaño consistente */
+  color: var(--primary-color); /* Color primario para enlaces */
   text-decoration: none;
-  transition: color 0.2s ease;
-  font-family: 'Nexa', sans-serif;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  margin-top: auto; /* Empuja el link al final de la tarjeta */
 }
 
 .featureLink:hover {
-  color: #3730a3;
+  color: var(--primary-hover-color);
+  text-decoration: underline;
 }
 
-/* Responsive mobile: slider horizontal */
-@media (max-width: 768px) {
+
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 992px) { /* Tablets */
+  .featuresSection {
+    padding: 4rem 1.5rem;
+  }
+  .featuresHeader {
+    max-width: 90%;
+  }
+  .featuresTitle {
+    font-size: 1.8rem;
+  }
+  .featuresSubtitle {
+    font-size: 0.95rem;
+  }
+
   .featuresGrid {
-    display: flex;
-    gap: 1rem;
-    padding: 0 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajuste para tablets */
+    gap: 1.5rem;
+  }
+  .featureCard {
+    border-radius: 1rem;
+  }
+  .featureContent {
+    padding: 1.5rem;
+  }
+  .featureTitle {
+    font-size: 1.2rem;
+  }
+  .featureDescription {
+    font-size: 0.9rem;
+  }
+  .featureLink {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) { /* Móviles */
+  .featuresSection {
+    padding: 3rem 1rem;
+    text-align: left; /* Alineación a la izquierda en móvil */
+  }
+  .featuresHeader {
+    text-align: left;
+    margin-bottom: 3rem;
+  }
+  .featuresTitle {
+    font-size: 1.6rem;
+  }
+  .featuresSubtitle {
+    font-size: 0.9rem;
+  }
+
+  /* El grid se convierte en un flex para el slider horizontal */
+  .featuresGrid {
+    display: flex; /* Cambia a flex para el scroll horizontal */
+    gap: 1.5rem;
+    padding: 0 1rem; /* Padding horizontal para que las tarjetas no peguen al borde */
+    overflow-x: auto; /* Permite el scroll horizontal */
+    scroll-snap-type: x mandatory; /* Habilita el snapping */
+    -webkit-overflow-scrolling: touch;
+    margin-left: 0; /* Asegura que no haya margen */
+    margin-right: 0;
+    max-width: unset; /* Ancho ilimitado para el scroll */
+    width: auto;
   }
 
   .featureCard {
-    min-width: 320px;
-    scroll-snap-align: start;
-    flex-shrink: 0;
+    min-width: 280px; /* Ancho mínimo para las tarjetas en móvil */
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
+    scroll-snap-align: start; /* Alinea al inicio al hacer scroll */
+    box-shadow: var(--shadow-md); /* Menos sombra en móvil */
+    border-radius: 0.75rem;
+  }
+  .featureCard:hover {
+    transform: none; /* Desactiva la elevación al hover en móvil */
+    box-shadow: var(--shadow-md);
+  }
+
+  .featureImage {
+    height: 160px; /* Reduce la altura de la imagen en móvil */
+  }
+  .featureContent {
+    padding: 1.25rem;
+  }
+  .featureTitle {
+    font-size: 1.1rem;
+  }
+  .featureDescription {
+    font-size: 0.85rem;
+  }
+  .featureLink {
+    font-size: 0.9rem;
   }
 
   .sliderWrapper {
-    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem; /* Espacio para la barra de scroll si aparece */
   }
 }

@@ -1,122 +1,210 @@
+
+
+/* SECCIÓN PRINCIPAL */
 .interface {
-  background-color: #ffffff;
-  color: #0f172a;
-  padding: 6rem 2rem 4rem;
+  background-color: var(--card-background); /* Fondo blanco consistente */
+  color: var(--text-dark); /* Color de texto general */
+  padding: 6rem 2.5rem; /* Padding amplio y consistente */
+  box-sizing: border-box;
+  overflow: hidden; /* Evita scroll lateral inesperado */
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
 }
 
+/* CONTENEDOR INTERNO (para texto e imagen) */
 .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permite envolver en pantallas pequeñas */
   align-items: center;
   justify-content: space-between;
-  max-width: 1280px;
+  max-width: 1200px; /* Ancho máximo del contenido */
   margin: 0 auto;
-  gap: 2rem;
+  gap: 3rem; /* Espacio generoso entre columnas */
+  margin-bottom: 4rem; /* Margen inferior antes del slider */
 }
 
+/* COLUMNA DE TEXTO (izquierda) */
 .left {
-  flex: 1 1 480px;
+  flex: 1 1 500px; /* Base de 500px, flexible */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  font-family: 'Nexa', sans-serif;
+  font-size: 2.5rem; /* Tamaño consistente */
+  font-weight: 800; /* Más peso */
+  color: var(--text-dark); /* Color oscuro */
+  line-height: 1.2;
+  margin: 0;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #475569;
-  font-family: 'Roboto', sans-serif;
-  max-width: 480px;
+  font-size: 1.05rem; /* Tamaño consistente */
+  color: var(--text-medium); /* Color intermedio */
+  line-height: 1.6;
+  max-width: 500px; /* Mantener un ancho legible */
+  margin: 0;
 }
 
 .buttons {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Envuelve los botones */
+  margin-top: 0.5rem; /* Ajuste de margen */
 }
 
+/* Botones principales y secundarios (Reutilizados de Hero) */
 .primaryBtn {
-  background-color: #4F46E5;
+  background-color: var(--primary-color);
   color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.9rem 2.25rem;
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  border: none;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.primaryBtn:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
 }
 
 .secondaryBtn {
-  background: none;
-  color: #4F46E5;
-  border: 2px solid #4F46E5;
-  padding: 0.75rem 1.5rem;
+  background-color: transparent; /* Fondo transparente */
+  color: var(--primary-color); /* Color primario para el texto */
+  border: 2px solid var(--primary-color); /* Borde de color primario */
+  padding: 0.8rem 2.15rem; /* Padding ajustado por el borde */
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.secondaryBtn:hover {
+  background-color: var(--primary-color); /* Fondo primario al hover */
+  color: white; /* Texto blanco al hover */
+  transform: translateY(-2px);
 }
 
+/* COLUMNA DE IMAGEN (derecha) */
 .right {
-  flex: 1 1 500px;
+  flex: 1 1 500px; /* Base de 500px, flexible */
   text-align: center;
 }
 
 .previewImage {
   width: 100%;
-  max-width: 500px;
-  border-radius: 1rem;
-  box-shadow: 0 0 0 4px #E5E7EB;
+  max-width: 550px; /* Ajusta a un ancho consistente con la imagen del Hero */
+  border-radius: 1.5rem; /* Bordes redondeados */
+  box-shadow: var(--shadow-lg); /* Sombra consistente */
+  box-sizing: border-box;
 }
 
-/* Logo Slider */
+/* Carrusel de Logos (Logo Slider) */
 .logoSlider {
-  margin-top: 3rem;
   display: flex;
   gap: 2rem;
-  overflow-x: auto;
-  padding: 1rem 0;
-  justify-content: center;
-  scroll-snap-type: x mandatory;
+  overflow-x: auto; /* Permite scroll horizontal */
+  padding: 1rem 2.5rem; /* Padding para que los logos no se peguen a los bordes */
+  justify-content: center; /* Alinea al inicio por defecto */
+  scroll-snap-type: x mandatory; /* Habilita el snapping */
+  -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+  scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
 }
-
 .logoSlider::-webkit-scrollbar {
-  display: none;
+  display: none; /* Oculta la barra de scroll en WebKit */
 }
 
 .logoItem {
-  height: 32px;
+  height: 40px; /* Aumenta el tamaño de los logos */
   object-fit: contain;
-  scroll-snap-align: center;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  scroll-snap-align: start; /* Alinea al inicio al hacer scroll */
+  opacity: 0.6; /* Un poco menos de opacidad por defecto */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0; /* Evita que los logos se encojan */
+  filter: grayscale(100%); /* Desatura los logos */
 }
 
 .logoItem:hover {
-  opacity: 1;
+  opacity: 1; /* Opacidad completa al hover */
+  filter: grayscale(0%); /* Color al hover */
+  transform: scale(1.05); /* Pequeño zoom */
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) { /* Tablets */
+  .interface {
+    padding: 4rem 1.5rem;
+  }
   .container {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column; /* Apila columnas */
+    align-items: center; /* Centra contenido */
+    gap: 2rem;
   }
-
   .left {
-    align-items: center;
-  }
-
-  .subtitle {
+    align-items: center; /* Centra el texto */
     text-align: center;
+    flex: 1 1 auto; /* Ajuste flex */
+    max-width: 100%;
   }
-
+  .title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    max-width: 90%;
+  }
   .buttons {
+    justify-content: center; /* Centra los botones */
+    flex-direction: column; /* Apila botones */
+    width: 100%;
+    max-width: 400px;
+    gap: 0.75rem;
+  }
+  .primaryBtn, .secondaryBtn {
+    width: 100%;
     justify-content: center;
+  }
+  .right {
+    order: -1; /* Mueve la imagen arriba en móvil */
+    flex: 1 1 auto;
+    max-width: 90%;
+  }
+  .previewImage {
+    border-radius: 1rem;
+    max-width: 100%;
+  }
+  .logoSlider {
+    padding: 1rem 1.5rem; /* Ajuste padding móvil */
+    gap: 1.5rem;
+  }
+  .logoItem {
+    height: 35px;
+  }
+}
+
+@media (max-width: 768px) { /* Móviles */
+  .interface {
+    padding: 3rem 1rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  .primaryBtn, .secondaryBtn {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .logoItem {
+    height: 30px;
   }
 }

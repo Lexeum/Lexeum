@@ -1,41 +1,61 @@
+/* FOOTER GENERAL */
 .footer {
-  background-color: #ffffff;
-  color: #1D1B3B;
-  padding: 4rem 2rem 2rem;
-  font-family: 'Roboto', sans-serif;
+  background-color: var(--card-background); /* Fondo blanco consistente */
+  color: var(--text-dark); /* Color de texto general */
+  padding: 5rem 2.5rem 2.5rem; /* Padding amplio y consistente */
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  box-sizing: border-box;
 }
 
+/* Sección superior del footer */
 .top {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
-  max-width: 1280px;
-  margin: 0 auto 2rem auto;
+  gap: 2.5rem; /* Espaciado generoso */
+  max-width: 1200px; /* Ancho máximo consistente */
+  margin: 0 auto 3rem auto; /* Margen inferior */
 }
 
+/* Bloque del logo */
 .logoBlock {
-  flex: 1 1 200px;
+  flex: 1 1 250px; /* Base más amplia para el logo y descripción */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Espaciado interno */
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #4F46E5;
-  font-family: 'Nexa', sans-serif;
+  font-size: 1.8rem; /* Tamaño de logo consistente */
+  font-weight: 700;
+  color: var(--primary-color); /* Color primario para el logo */
+  margin: 0;
 }
 
+/* Descripción del logo block (si se añade en el JSX) */
+.logoDescription {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+/* Grupos de enlaces */
 .linkGroups {
   display: flex;
-  flex: 3 1 600px;
+  flex: 3 1 650px; /* Flexibilidad y ancho base */
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1.5rem; /* Espaciado entre grupos */
   flex-wrap: wrap;
 }
 
+.linkGroups > div { /* Contenedor de cada grupo de enlaces */
+  flex: 1 1 150px; /* Ancho base para cada columna de enlaces */
+}
+
 .linkGroups h4 {
-  font-size: 1rem;
+  font-size: 1.05rem; /* Tamaño consistente para títulos de columna */
   font-weight: 700;
+  color: var(--text-dark); /* Color oscuro */
   margin-bottom: 1rem;
 }
 
@@ -46,80 +66,135 @@
 }
 
 .linkGroups li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem; /* Espaciado entre elementos de lista */
 }
 
 .linkGroups a {
   text-decoration: none;
-  color: #1D1B3B;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  color: var(--text-medium); /* Color intermedio para enlaces */
+  font-size: 0.95rem; /* Tamaño consistente */
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  font-weight: 500;
 }
 
 .linkGroups a:hover {
-  color: #4F46E5;
+  color: var(--primary-color); /* Color primario al hover */
+  text-decoration: underline;
 }
 
 /* Redes sociales */
 .social {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 1.25rem; /* Espaciado entre íconos */
+  margin-top: 0.75rem; /* Margen superior */
 }
 
 .social a {
-  color: #1D1B3B;
-  font-size: 1.1rem;
-  transition: color 0.2s ease;
+  color: var(--text-medium); /* Color intermedio para íconos sociales */
+  font-size: 1.3rem; /* Tamaño del ícono */
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .social a:hover {
-  color: #4F46E5;
+  color: var(--primary-color); /* Color primario al hover */
+  transform: translateY(-2px); /* Efecto de elevación */
 }
 
 /* Línea divisoria */
 .divider {
   border: none;
-  border-top: 1px solid #E5E7EB;
-  margin: 2rem auto;
-  max-width: 1280px;
+  border-top: 1px solid var(--divider-color); /* Color de divisor consistente */
+  margin: 3rem auto; /* Margen superior/inferior ajustado */
+  max-width: 1200px;
 }
 
-/* Parte inferior */
+/* Parte inferior del footer */
 .bottom {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  font-size: 0.85rem;
-  color: #6b7280;
+  font-size: 0.9rem; /* Tamaño consistente */
+  color: var(--text-light); /* Color gris claro */
+  gap: 1rem; /* Espaciado si los elementos se envuelven */
 }
 
 .policyLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.5rem; /* Espaciado entre enlaces de política */
 }
 
 .policyLinks a {
-  color: #6b7280;
+  color: var(--text-light);
   text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .policyLinks a:hover {
+  color: var(--primary-color); /* Color primario al hover */
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
 
+@media (max-width: 1024px) { /* Tablets */
+  .footer {
+    padding: 4rem 1.5rem 2rem;
+  }
+  .top {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .linkGroups {
+    gap: 1rem;
+  }
+  .linkGroups > div {
+    flex: 1 1 calc(50% - 0.75rem); /* Dos columnas en tablets */
+  }
+  .divider {
+    margin: 2rem auto;
+  }
+  .bottom {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) { /* Móviles */
+  .footer {
+    padding: 3rem 1rem 1.5rem;
+  }
+  .top {
+    flex-direction: column; /* Apila las columnas */
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .logoBlock {
+    flex: 1 1 auto; /* Permite que ocupe el ancho completo */
+  }
+  .linkGroups {
+    flex-direction: column; /* Apila los grupos de enlaces */
+    flex: 1 1 auto;
+    gap: 2rem; /* Espacio entre grupos apilados */
+  }
+  .linkGroups > div {
+    flex: 1 1 auto; /* Ocupa el ancho completo */
+  }
+  .linkGroups li {
+    margin-bottom: 0.6rem;
+  }
+  .social {
+    justify-content: flex-start; /* Alinea los íconos a la izquierda */
+  }
   .bottom {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
+  }
+  .policyLinks {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }

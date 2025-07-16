@@ -1,13 +1,17 @@
+'use client';
 import styles from './Footer.module.css';
-import { FaTwitter, FaLinkedin, FaDribbble } from 'react-icons/fa';
+import { FaTwitter, FaLinkedin, FaDribbble } from 'react-icons/fa'; // Asegúrate de tener react-icons instalados
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        {/* Logo + descripción */}
+        {/* Logo + descripción (si añades una descripción, va aquí) */}
         <div className={styles.logoBlock}>
+          {/* Usamos la clase .logo que ya tiene los estilos definidos */}
           <h3 className={styles.logo}>LEXEUM</h3>
+          {/* Puedes añadir una descripción aquí si lo deseas, por ejemplo: */}
+          {/* <p className={styles.logoDescription}>Optimiza tu práctica legal con IA avanzada.</p> */}
         </div>
 
         {/* Enlaces organizados */}
@@ -42,9 +46,10 @@ export default function Footer() {
           <div>
             <h4>Síguenos</h4>
             <div className={styles.social}>
-              <a href="#"><FaTwitter /></a>
-              <a href="#"><FaDribbble /></a>
-              <a href="#"><FaLinkedin /></a>
+              {/* Los íconos de react-icons ya son SVG, los estilos aplicarán bien */}
+              <a href="#" aria-label="Twitter"><FaTwitter /></a>
+              <a href="#" aria-label="Dribbble"><FaDribbble /></a>
+              <a href="#" aria-label="LinkedIn"><FaLinkedin /></a>
             </div>
           </div>
         </div>

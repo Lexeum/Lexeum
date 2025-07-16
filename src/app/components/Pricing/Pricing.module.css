@@ -1,186 +1,279 @@
+
 .pricing {
-  padding: 6rem 2rem;
-  background-color: #ffffff;
+  padding: 6rem 2.5rem; /* Padding amplio y consistente */
+  background-color: var(--background-color); /* Fondo consistente */
   text-align: center;
-  color: #0f172a;
+  color: var(--text-dark); /* Color de texto general */
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  box-sizing: border-box;
 }
 
+/* Encabezado de la sección */
 .header {
-  margin-bottom: 3rem;
-  max-width: 768px;
+  margin-bottom: 3.5rem; /* Margen inferior ajustado */
+  max-width: 800px; /* Ancho máximo consistente */
   margin-inline: auto;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 800;
-  font-family: 'Nexa', sans-serif;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem; /* Tamaño de título grande y consistente */
+  font-weight: 800; /* Peso grueso */
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #64748b;
-  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem; /* Tamaño consistente */
+  color: var(--text-medium);
+  line-height: 1.6;
 }
 
+/* Contenedor de planes */
 .plans {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+
+  gap: 2rem; /* Espaciado entre tarjetas */
   justify-content: center;
+  max-width: 1200px; /* Ancho máximo para el contenedor de planes */
+  margin: 0 auto;
 }
 
-/* Tarjetas */
+/* Tarjetas base de los planes */
 .card {
-  background-color: #ffffff;
-  border: 1px solid #E5E7EB;
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 320px;
-  flex: 1 1 300px;
-  box-shadow: 0 0 0 1px #e5e7eb;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem; /* Bordes redondeados */
+  padding: 2.5rem; /* Padding generoso */
+  max-width: 380px; /* Aumentamos el ancho máximo para mejor espaciado */
+  flex: 1 1 300px; /* Flexibilidad de ancho */
+  box-shadow: var(--shadow-md); /* Sombra estándar */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  transition: box-shadow 0.3s ease;
+  gap: 1.25rem; /* Espaciado entre elementos de la tarjeta */
+  transition: all 0.25s ease, border-color 0.25s ease;
   position: relative;
+  cursor: pointer;
 }
 
 .card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg); /* Sombra más grande al hover */
+  transform: translateY(-5px); /* Efecto de elevación */
+  border-color: var(--primary-color); /* Borde de color al hover */
 }
 
 .card h3 {
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Tamaño de título de plan */
   font-weight: 700;
-  font-family: 'Nexa', sans-serif;
+  color: var(--text-dark);
+  margin: 0;
 }
 
 .card h3 small {
   display: block;
-  font-size: 0.85rem;
-  color: #4F46E5;
-  margin-top: 0.25rem;
-  font-family: 'Nexa', sans-serif;
+  font-size: 0.95rem; /* Tamaño más consistente */
+  color: var(--primary-color); /* Color primario para el ahorro */
+  margin-top: 0.5rem;
+  font-weight: 600;
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 3rem; /* Tamaño grande para el precio */
   font-weight: 800;
-  color: #0f172a;
-  font-family: 'Nexa', sans-serif;
+  color: var(--text-dark); /* Color oscuro */
+  margin: 0;
+  line-height: 1;
 }
 
 .price span {
-  font-size: 1rem;
-  color: #6b7280;
-  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem; /* Tamaño consistente para /mes */
+  color: var(--text-light); /* Color gris claro */
+  font-weight: 500;
+}
+
+/* Botones base */
+.planButton {
+  border: none;
+  padding: 0.9rem 2.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: 100%; /* Ocupa todo el ancho de la tarjeta */
+  margin-top: 0.5rem; /* Pequeño margen superior */
 }
 
 /* Botón normal */
-.btn {
-  background-color: #E5E7EB;
-  color: #1D1B3B;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-family: 'Roboto', sans-serif;
+.planButton.normal {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
 }
-
-.btn:hover {
-  background-color: #d1d5db;
+.planButton.normal:hover {
+  background-color: var(--border-color);
+  transform: translateY(-2px);
 }
 
 /* Botón destacado */
-.btnFeatured {
-  background-color: #4F46E5;
+.planButton.featured {
+  background-color: var(--primary-color);
   color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-family: 'Nexa', sans-serif;
 }
-  
-
-.btnFeatured:hover {
-  background-color: #4338ca;
+.planButton.featured:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
 }
 
 .note {
-  font-size: 0.85rem;
-  color: #6b7280;
+  font-size: 0.9rem; /* Tamaño consistente */
+  color: var(--text-medium);
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  margin-top: 0.75rem; /* Margen superior */
 }
 
-/* Enlace */
+/* Enlace "Más información" */
 .card a {
-  font-size: 0.85rem;
-  color: #4F46E5;
+  font-size: 0.9rem; /* Tamaño consistente */
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  font-family: 'Roboto', sans-serif;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  margin-top: auto; /* Empuja el enlace al final de la tarjeta */
 }
-
 .card a:hover {
   text-decoration: underline;
 }
 
+
 /* Plan destacado */
 .featured {
-  border: 2px solid #4F46E5;
-  background-color: #F5F3FF;
-  transform: scale(1.05);
+  border: 2px solid var(--primary-color); /* Borde de color primario */
+  background-color: var(--featured-card-bg); /* Fondo específico para destacado */
+  transform: scale(1.05); /* Ligeramente más grande */
   z-index: 1;
-  box-shadow: 0 0 0 2px #4F46E5;
-  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 0 0 2px var(--primary-color), var(--shadow-lg); /* Sombra con borde de color */
+}
+
+.featured:hover {
+  transform: scale(1.05) translateY(-5px); /* Mantiene escala y eleva */
 }
 
 .featured .price {
-  color: #4F46E5;
+  color: var(--primary-color); /* Precio de color primario */
 }
 
 .featured .note {
-  color: #4B5563;
+  color: var(--text-dark); /* Texto más oscuro para la nota destacada */
 }
 
-.featured a {
-  color: #4F46E5;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Badge */
-.badge {
+/* Badge "Mejor valor" */
+.featuredTop {
   position: absolute;
-  top: -1.25rem;
-  background-color: #4F46E5;
+  top: -1.25rem; /* Ajuste para que sobresalga */
+  background-color: var(--primary-color); /* Color primario */
   color: white;
-  font-size: 0.75rem;
+  font-size: 0.8rem; /* Tamaño consistente */
   font-weight: 600;
-  padding: 0.25rem 0.75rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 9999px;
   left: 50%;
   transform: translateX(-50%);
+  white-space: nowrap; /* Evita que el texto se rompa */
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .plans {
-    flex-direction: column;
-    align-items: center;
-  }
 
+/* Card activa (seleccionada) */
+.active {
+  /* Estilo visual más sutil y moderno para el estado activo */
+  border: 2px solid var(--primary-color); /* Borde de color primario */
+  box-shadow: 0 0 0 4px var(--accent-blue-light), var(--shadow-xl); /* Sombra con halo y más grande */
+  transform: scale(1.03); /* Ligeramente más grande */
+  z-index: 2;
+}
+
+.active:hover {
+  transform: scale(1.03) translateY(-5px); /* Mantiene escala y eleva */
+}
+
+
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) { /* Tablets */
+  .pricing {
+    padding: 4rem 1.5rem;
+  }
+  .header {
+    margin-bottom: 3rem;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .plans {
+    gap: 1.5rem;
+  }
   .card {
-    max-width: 100%;
+    flex: 1 1 280px; /* Ajuste para tablets */
+    padding: 2rem;
+  }
+  .card h3 {
+    font-size: 1.4rem;
+  }
+  .price {
+    font-size: 2.5rem;
+  }
+  .planButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+  }
+}
+
+@media (max-width: 768px) { /* Móviles */
+  .pricing {
+    padding: 3rem 1rem;
+  }
+  .header {
+    margin-bottom: 2.5rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  .plans {
+    flex-direction: column; /* Apila las tarjetas */
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .card {
+    max-width: 90%; /* Ocupa la mayor parte del ancho de la vista */
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transform: none !important; /* Deshabilita transform al hover/active en móvil */
+    box-shadow: var(--shadow-md) !important; /* Mantiene sombra md */
+  }
+  .card:hover, .card.active {
+    transform: none;
+    box-shadow: var(--shadow-md); /* Deshabilita sombras extra */
+  }
+  .card.active {
+    border: 2px solid var(--primary-color); /* Mantiene solo el borde de color */
+  }
+  .card h3 {
+    font-size: 1.25rem;
+  }
+  .price {
+    font-size: 2rem;
+  }
+  .planButton {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
   }
 }

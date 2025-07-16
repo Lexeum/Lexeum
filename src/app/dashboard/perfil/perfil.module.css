@@ -1,0 +1,544 @@
+:root {
+  --primary-text-color: #1a202c; /* Título principal, texto oscuro */
+  --secondary-text-color: #4a5568; /* Subtítulos, labels */
+  --light-text-color: #718096; /* Texto auxiliar, info */
+  --border-color: #e2e8f0; /* Bordes de tarjetas e inputs */
+  --background-light: #f7fafc; /* Fondo general */
+  --card-background: #ffffff; /* Fondo de tarjetas */
+  --button-primary: #1a202c; /* Botón principal */
+  --button-secondary: #edf2f7; /* Botón secundario */
+  --accent-blue: #3182ce; /* Azul para enlaces o acentos */
+  --active-pill-background: #e6fffa; /* Fondo para píldora "Activo" */
+  --active-pill-text: #38b2ac; /* Texto para píldora "Activo" */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Usaremos Inter como una fuente moderna y limpia, similar a la imagen */
+  background-color: var(--background-light);
+  color: var(--primary-text-color);
+}
+
+
+.container {
+  padding: 2.5rem; /* Aumentamos el padding general */
+  max-width: 1200px; /* Ancho máximo para el layout de dos columnas */
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle-description {
+  font-size: 0.95rem;
+  color: var(--light-text-color);
+}
+
+.mainContent {
+  display: flex;
+  gap: 2rem; /* Espacio entre las dos columnas */
+}
+
+.sidebar {
+  flex: 0 0 280px; /* Ancho fijo para la barra lateral */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formSection {
+  flex: 1; /* Ocupa el espacio restante */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Estilos de Card genéricos */
+.card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem; /* Bordes más redondeados */
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Sombra sutil */
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cardHeader .actionButton {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cardHeader .actionButton:hover {
+  background-color: var(--background-light);
+}
+
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+}
+
+/* SECCIÓN DE PERFIL DE USUARIO (IZQUIERDA) */
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem; /* Más padding vertical */
+}
+
+.avatar {
+  width: 96px; /* Tamaño del avatar */
+  height: 96px;
+  background-color: #e0e7ff; /* Fondo para las iniciales del avatar */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem; /* Tamaño de las iniciales */
+  font-weight: 600;
+  color: #3f51b5; /* Color de las iniciales */
+  margin-bottom: 1rem;
+}
+
+.profileName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  margin-bottom: 0.25rem;
+}
+
+.profileEmail {
+  font-size: 0.9rem;
+  color: var(--light-text-color);
+  margin-bottom: 1rem;
+}
+
+.changePhotoButton {
+  background: var(--button-secondary);
+  color: var(--secondary-text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.changePhotoButton:hover {
+  background-color: #e2e8f0;
+}
+
+/* SECCIÓN DE PLAN ACTUAL */
+.planCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.planHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.planTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+}
+
+.planStatusPill {
+  background-color: var(--active-pill-background);
+  color: var(--active-pill-text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* Para forma de píldora */
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.planDetails {
+  font-size: 0.9rem;
+  color: var(--light-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.planFeaturesList {
+  list-style: none; /* Quitar viñetas por defecto */
+  padding: 0;
+  margin: 0.75rem 0;
+}
+
+.planFeaturesList li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+}
+
+.planFeaturesList li::before {
+  content: '✓'; /* Icono de check mark */
+  color: var(--active-pill-text); /* Color verde */
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.changePlanButton {
+  background-color: var(--button-primary);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.changePlanButton:hover {
+  background-color: #2d3748;
+}
+
+/* SECCIONES DEL FORMULARIO (DERECHA) */
+.formGroup {
+  margin-bottom: 1.5rem; /* Espacio entre grupos de campos */
+}
+
+.formGroup:last-child {
+  margin-bottom: 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
+  gap: 1rem; /* Espacio entre campos */
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: var(--secondary-text-color);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"] {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--primary-text-color);
+  background-color: var(--background-light); /* Fondo ligero para los inputs */
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2); /* Sombra al enfocar */
+}
+
+/* SECCIÓN DE SEGURIDAD */
+.securityCard {
+  /* Estilos para la card, ya definidos por .card */
+}
+
+.securitySection {
+  margin-bottom: 1.2rem;
+}
+
+.securitySection:last-child {
+  margin-bottom: 0;
+}
+
+.securityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.securitySubtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+}
+
+.changePasswordButton {
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0; /* Remover padding para que parezca un enlace */
+}
+
+.changePasswordButton:hover {
+  text-decoration: underline;
+}
+
+.twoFactorAuth {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.twoFactorAuth label {
+  font-size: 0.95rem;
+  color: var(--primary-text-color);
+  font-weight: 500;
+}
+
+.twoFactorAuth .description {
+  font-size: 0.85rem;
+  color: var(--light-text-color);
+}
+
+/* Estilos para el switch (toggle) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 22px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent-blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--accent-blue);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+
+/* Historial de inicio de sesión */
+.sessionHistory {
+  margin-top: 1.5rem;
+}
+
+.sessionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color); /* Separador */
+}
+
+.sessionItem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sessionInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.sessionLocation {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary-text-color);
+  margin-bottom: 0.2rem;
+}
+
+.sessionDevice {
+  font-size: 0.85rem;
+  color: var(--light-text-color);
+}
+
+.sessionTime {
+  font-size: 0.85rem;
+  color: var(--light-text-color);
+}
+
+
+/* SECCIÓN DE PREFERENCIAS */
+.preferencesCard {
+  /* Estilos para la card, ya definidos por .card */
+}
+
+.preferencesGroup {
+  margin-bottom: 1.2rem;
+}
+
+.preferencesGroup:last-child {
+  margin-bottom: 0;
+}
+
+.preferencesLabel {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary-text-color);
+  margin-bottom: 0.4rem;
+  display: block; /* Para que la descripción quede debajo */
+}
+
+.preferencesDescription {
+  font-size: 0.85rem;
+  color: var(--light-text-color);
+  margin-bottom: 0.8rem;
+}
+
+.preferencesField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preferencesField select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--primary-text-color);
+  background-color: var(--background-light);
+  appearance: none; /* Elimina la flecha predeterminada del select */
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%234a5568" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Flecha personalizada */
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  cursor: pointer;
+}
+
+.preferencesField select:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+}
+
+/* Botón de Guardar */
+.actions {
+  display: flex;
+  justify-content: flex-end; /* Alineado a la derecha */
+  padding-top: 1rem;
+}
+
+.actions button {
+  background-color: var(--button-primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.8rem; /* Mayor padding */
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #2d3748;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 992px) {
+  .mainContent {
+    flex-direction: column; /* Apilar columnas en pantallas más pequeñas */
+    gap: 1.5rem;
+  }
+
+  .sidebar {
+    flex: none; /* Eliminar ancho fijo */
+    width: 100%;
+  }
+
+  .profileCard {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+  }
+}

@@ -1,0 +1,405 @@
+/* ==================================== */
+/* VARIABLES DE COLOR (Reutilizadas)  */
+/* ==================================== */
+:root {
+  --primary-color: #4F46E5;
+  --primary-hover-color: #3e38c4;
+  --secondary-color: #1D1B3B;
+  --secondary-hover-color: #2d2b5c;
+  --accent-blue: #3182ce;
+  --accent-blue-light: #e0e7ff;
+  --text-dark: #1a202c;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-subtle: #9ca3af;
+  --background-color: #f9fafb;
+  --card-background: #ffffff;
+  --border-color: #e5e7eb;
+  --divider-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  /* COLORES DE ESTADO (Badges) */
+  --badge-green-bg: #dcfce7;
+  --badge-green-text: #15803d;
+  --badge-yellow-bg: #fef9c3;
+  --badge-yellow-text: #b45309;
+  --badge-red-bg: #fee2e2;
+  --badge-red-text: #b91c1c;
+  --badge-blue-bg: #dbeafe;
+  --badge-blue-text: #1e40af;
+  --badge-gray-bg: #e5e7eb; /* Nuevo color para 'Document' */
+  --badge-gray-text: #4b5563;
+}
+
+/* ==================================== */
+/* LAYOUT PRINCIPAL DE LA PÁGINA      */
+/* ==================================== */
+
+.documentsContainer {
+  padding: 2.5rem;
+  background-color: var(--background-color);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  min-height: calc(100vh - 80px);
+  box-sizing: border-box;
+}
+
+/* Encabezado principal (Título) */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ==================================== */
+/* BARRA DE BÚSQUEDA Y BOTONES        */
+/* ==================================== */
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.searchInputWrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 90%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background); /* Fondo blanco */
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm); /* Sombra sutil */
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.uploadButton {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.uploadButton:hover {
+  background-color: var(--secondary-hover-color);
+}
+
+/* ==================================== */
+/* FILTROS SECUNDARIOS                */
+/* ==================================== */
+
+.filtersRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filterButton, .filterSelect {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+.filterSelect {
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+.filterButton:hover, .filterSelect:hover {
+  background-color: var(--background-color);
+  border-color: var(--text-light);
+}
+.filterButton:focus, .filterSelect:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* ==================================== */
+/* TABLA DE DOCUMENTOS                */
+/* ==================================== */
+
+.tableWrapper {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--divider-color);
+  color: var(--text-medium);
+  white-space: nowrap;
+}
+
+.table th {
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background-color: var(--background-color); }
+
+/* Estilos de la columna Documento */
+.documentCell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.documentIconWrapper {
+  width: 40px;
+  height: 40px;
+  background-color: var(--background-color); /* Fondo gris claro */
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.documentName {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Estilos de la columna Tipo */
+.typeBadge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--badge-gray-bg);
+  color: var(--badge-gray-text);
+}
+
+/* Botón de acciones */
+.actionBtnWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.actionBtn {
+  background: none;
+  border: none;
+  color: var(--text-subtle);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.actionBtn:hover {
+  background-color: var(--background-color);
+  color: var(--text-medium);
+}
+
+/* Menú de acciones contextual */
+.actionsMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 50;
+  margin-top: 0.5rem;
+}
+.actionsMenu button {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 0.75rem 1rem; border-radius: 0.5rem; cursor: pointer;
+  font-size: 0.9rem; color: var(--text-medium); transition: background-color 0.2s ease;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.actionsMenu button:hover { background-color: var(--background-color); color: var(--text-dark); }
+.actionsMenu button.deleteBtn { color: var(--badge-red-text); }
+.actionsMenu button.deleteBtn:hover { background-color: var(--badge-red-bg); }
+
+/* ==================================== */
+/* PAGINACIÓN                         */
+/* ==================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center; /* Centramos la paginación como en la imagen */
+  align-items: center;
+  padding: 1.5rem;
+  background-color: transparent; /* No tiene fondo de tarjeta */
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  gap: 1rem; /* Espaciado entre elementos */
+}
+
+.pageControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageButton {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-medium);
+  width: 40px; /* Tamaño un poco más grande */
+  height: 40px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+.pageButton:hover:not(:disabled) {
+  background-color: var(--card-background);
+  border-color: var(--text-light);
+}
+
+.pageButton.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+.pageButton.active:hover {
+  background-color: var(--primary-hover-color);
+}
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pageButton.prevNext {
+  width: auto;
+  padding: 0 1rem;
+}
+.pageButton.prevNext:hover {
+  background-color: var(--card-background);
+}
+
+
+/* ==================================== */
+/* MODAL - Reutilizamos estilos       */
+/* ==================================== */
+.modalBackdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+.modalContent { background-color: var(--card-background); padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 1.5rem; animation: fadeInScale 0.3s ease-out; }
+@keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.modalHeader { display: flex; justify-content: space-between; align-items: center; }
+.modalTitle { font-size: 1.5rem; font-weight: 700; margin: 0; }
+.closeButton { background: none; border: none; font-size: 1.5rem; color: var(--text-light); cursor: pointer; }
+.modalForm { display: flex; flex-direction: column; gap: 1rem; }
+.formGroup { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.formGroup label { font-size: 0.9rem; font-weight: 600; color: var(--text-medium); }
+.formGroup input, .formGroup textarea, .formGroup select {
+  width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid var(--border-color);
+  background-color: var(--background-color); font-size: 1rem; color: var(--text-dark);
+  font-family: 'Inter', sans-serif; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.formGroup input:focus, .formGroup textarea:focus, .formGroup select:focus {
+  outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+.formGroup textarea { min-height: 100px; resize: vertical; }
+.modalActions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; }
+.modalButton { padding: 1rem 2rem; border-radius: 1rem; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background-color 0.2s ease; }
+.cancelButton { background-color: transparent; color: var(--text-medium); border: 1px solid var(--border-color); }
+.cancelButton:hover { background-color: var(--background-color); }
+.saveButton { background-color: var(--primary-color); color: white; border: none; }
+.saveButton:hover { background-color: var(--primary-hover-color); }
+.formGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+
+
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) {
+  .documentsContainer { padding: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  .documentsContainer { padding: 1rem; }
+  .pageHeader { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .searchBar { flex-direction: column; align-items: stretch; }
+  .searchInputWrapper { width: 100%; }
+  .filtersRow { flex-direction: column; align-items: stretch; }
+  .filterButton, .filterSelect { width: 100%; justify-content: center; }
+  .uploadButton { width: 100%; justify-content: center; }
+  .documentItem { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem; }
+  .documentInfo { width: 100%; }
+  .documentActions { width: 100%; justify-content: space-between; }
+  .pagination { flex-direction: column; gap: 1rem; }
+}

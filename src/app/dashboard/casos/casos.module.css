@@ -1,0 +1,463 @@
+/* ==================================== */
+/* VARIABLES DE COLOR (Reutilizadas)  */
+/* ==================================== */
+:root {
+  --primary-color: #4F46E5;
+  --primary-hover-color: #3e38c4;
+  --secondary-color: #1D1B3B;
+  --secondary-hover-color: #2d2b5c;
+  --accent-blue: #3182ce;
+  --accent-blue-light: #e0e7ff; 
+  --text-dark: #1a202c;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-subtle: #9ca3af;
+  --background-color: #f9fafb;
+  --card-background: #ffffff;
+  --border-color: #e5e7eb;
+  --divider-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  /* COLORES DE ESTADO (Badges) */
+  --badge-green-bg: #dcfce7;
+  --badge-green-text: #15803d;
+  --badge-yellow-bg: #fef9c3;
+  --badge-yellow-text: #b45309;
+  --badge-red-bg: #fee2e2;
+  --badge-red-text: #b91c1c;
+  --badge-blue-bg: #dbeafe;
+  --badge-blue-text: #1e40af;
+}
+
+/* ==================================== */
+/* LAYOUT PRINCIPAL DE LA PÁGINA      */
+/* ==================================== */
+
+.casesContainer {
+  padding: 2.5rem;
+  background-color: var(--background-color);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  min-height: calc(100vh - 80px);
+  box-sizing: border-box;
+}
+
+/* Encabezado principal (Título + Botones) */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.exportButton, .newCaseButton {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.exportButton {
+  background-color: var(--card-background);
+  color: var(--text-dark);
+}
+
+.exportButton:hover {
+  background-color: var(--background-color);
+}
+
+.newCaseButton {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.newCaseButton:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* ==================================== */
+/* PANEL DE FILTROS Y BÚSQUEDA        */
+/* ==================================== */
+
+.filtersContainer {
+  background-color: var(--card-background);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.searchInputWrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  pointer-events: none; /* No interfiere con el input */
+}
+
+.searchInput {
+  width: 90%;
+  padding: 0.75rem 1rem 0.75rem 3rem; /* Aumenta el padding para el icono */
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.filterSelect {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  cursor: pointer;
+  min-width: 150px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+/* ==================================== */
+/* TABLA DE CASOS                     */
+/* ==================================== */
+
+.tableWrapper {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  overflow-x: auto; /* Permite el scroll horizontal en móviles */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 1rem 1.5rem; /* Más padding para espacio */
+  border-bottom: 1px solid var(--divider-color);
+  color: var(--text-medium);
+  white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.table th {
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+.table tbody tr:hover {
+  background-color: var(--background-color);
+}
+
+/* Estilos de la columna Caso */
+.caseDetails {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.caseId {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-subtle);
+  margin-top: 0.2rem;
+}
+
+/* Estilos de la columna Cliente (Avatar + Nombre) */
+.clientCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clientAvatar {
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Estilos de las píldoras de estado */
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.badge.green { background-color: var(--badge-green-bg); color: var(--badge-green-text); }
+.badge.yellow { background-color: var(--badge-yellow-bg); color: var(--badge-yellow-text); }
+.badge.red { background-color: var(--badge-red-bg); color: var(--badge-red-text); }
+.badge.blue { background-color: var(--badge-blue-bg); color: var(--badge-blue-text); }
+
+/* Contenedor del botón de acciones para posicionar el menú */
+.actionBtnWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón de acciones (tres puntos) */
+.actionBtn {
+  background: none;
+  border: none;
+  color: var(--text-subtle);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.actionBtn:hover {
+  background-color: var(--background-color);
+  color: var(--text-medium);
+}
+
+/* Menú de acciones contextual */
+.actionsMenu {
+  position: absolute;
+  top: 100%; /* Lo coloca debajo del botón */
+  right: 0;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 50; /* Por encima de la tabla */
+  margin-top: 0.5rem;
+}
+
+.actionsMenu button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.actionsMenu button:hover {
+  background-color: var(--background-color);
+  color: var(--text-dark);
+}
+.actionsMenu button.deleteBtn {
+  color: var(--danger-text);
+}
+.actionsMenu button.deleteBtn:hover {
+  background-color: var(--danger-bg);
+}
+
+
+/* ==================================== */
+/* PAGINACIÓN                         */
+/* ==================================== */
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--card-background);
+  border-top: 1px solid var(--divider-color);
+  border-radius: 0 0 1rem 1rem; /* Bordes inferiores redondeados */
+  font-size: 0.9rem;
+  color: var(--text-medium);
+}
+
+.pageInfo {
+  font-weight: 500;
+}
+
+.pageControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageButton {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-medium);
+  width: 36px;
+  height: 36px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+.pageButton:hover:not(:disabled) {
+  background-color: var(--background-color);
+  border-color: var(--text-light);
+}
+
+.pageButton.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+.pageButton.active:hover {
+  background-color: var(--primary-hover-color);
+}
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ==================================== */
+/* MODAL PARA AGREGAR CASO            */
+/* ==================================== */
+/* Reutilizamos los estilos del modal de Calendario para consistencia */
+.modalBackdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 1rem;
+}
+.modalContent {
+  background-color: var(--card-background); padding: 2.5rem; border-radius: 1.5rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 1.5rem;
+  animation: fadeInScale 0.3s ease-out;
+}
+@keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.modalHeader { display: flex; justify-content: space-between; align-items: center; }
+.modalTitle { font-size: 1.5rem; font-weight: 700; margin: 0; }
+.closeButton { background: none; border: none; font-size: 1.5rem; color: var(--text-light); cursor: pointer; }
+.modalForm { display: flex; flex-direction: column; gap: 1rem; }
+.formGroup {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  /* Asegura que el contenido no desborde su celda de grid */
+  min-width: 0;
+}
+.formGroup label { font-size: 0.9rem; font-weight: 600; color: var(--text-medium); }
+.formGroup input, .formGroup textarea, .formGroup select {
+  width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid var(--border-color);
+  background-color: var(--background-color); font-size: 1rem; color: var(--text-dark);
+  font-family: 'Inter', sans-serif; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.formGroup input:focus, .formGroup textarea:focus, .formGroup select:focus {
+  outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+.formGroup textarea { min-height: 100px; resize: vertical; }
+.modalActions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; }
+.modalButton { padding: 1rem 2rem; border-radius: 1rem; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background-color 0.2s ease; }
+.cancelButton { background-color: transparent; color: var(--text-medium); border: 1px solid var(--border-color); }
+.cancelButton:hover { background-color: var(--background-color); }
+.saveButton { background-color: var(--primary-color); color: white; border: none; }
+.saveButton:hover { background-color: var(--primary-hover-color); }
+
+.formGrid {
+  /* ¡VERSIÓN FINAL Y MÁS RESISTENTE A ERRORES DE LAYOUT! */
+  display: grid;
+  /* Reducimos el ancho mínimo de la columna a 220px para que quepa en más pantallas */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Aumentamos el espacio entre los campos para evitar solapamientos */
+  gap: 2rem; 
+}
+
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) {
+  .casesContainer { padding: 1.5rem; }
+  .filtersContainer { flex-direction: column; align-items: stretch; }
+  .filterSelect, .searchInputWrapper { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .casesContainer { padding: 1rem; }
+  .pageHeader { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .headerButtons { width: 100%; justify-content: stretch; }
+  .exportButton, .newCaseButton { flex: 1; justify-content: center; }
+  .modalContent { padding: 1.5rem; border-radius: 1rem; }
+  .formGrid { grid-template-columns: 1fr; }
+}

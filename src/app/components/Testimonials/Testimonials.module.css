@@ -1,131 +1,246 @@
+/* ==================================== */
+/* VARIABLES DE COLOR (Reutilizadas)  */
+/* ==================================== */
+/* Asegúrate que estas variables estén definidas en tu global.css o en un archivo central. */
+:root {
+  --primary-color: #4F46E5; /* Azul/Púrpura principal */
+  --primary-hover-color: #3e38c4;
+  --secondary-color: #1D1B3B; /* Color oscuro para botones/texto principal */
+  --secondary-hover-color: #2d2b5c;
+  --accent-blue: #3182ce;
+  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
+  --text-dark: #1a202c; /* Texto muy oscuro */
+  --text-medium: #374151; /* Texto secundario */
+  --text-light: #6b7280; /* Texto gris */
+  --background-color: #f9fafb; /* Fondo general de la app */
+  --card-background: #ffffff; /* Fondo de tarjetas */
+  --border-color: #e5e7eb; /* Bordes */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --gradient-start-color: #E5E7EB; /* Reutilizando el color original del gradiente */
+  --gradient-mid-color: var(--primary-color);
+  --gradient-end-color: var(--secondary-color);
+}
+
+/* SECCIÓN PRINCIPAL */
 .testimonials {
-  padding: 6rem 2rem;
-  color: #0f172a;
-  background: linear-gradient(135deg, #E5E7EB 0%, #4F46E5 40%, #1D1B3B 100%);
+  padding: 5rem 2.5rem; /* Padding amplio y consistente */
+  /* Fondo con el gradiente, usando variables */
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start-color) 0%,
+    var(--gradient-mid-color) 40%,
+    var(--gradient-end-color) 100%
+  );
+  color: white; /* Texto blanco por defecto para la sección */
   text-align: center;
   overflow: hidden;
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  box-sizing: border-box;
 }
 
+/* Título de la sección */
 .heading {
-  font-size: 2rem;
-  font-weight: 800;
-  font-family: 'Nexa', sans-serif;
-  color: white;
+  font-size: 2.5rem; /* Tamaño de título grande y consistente */
+  font-weight: 800; /* Peso grueso */
+  color: white; /* Color blanco para contraste con el gradiente */
   margin-bottom: 3rem;
+  line-height: 1.2;
 }
 
-/* Slider */
+/* Carrusel de tarjetas (slider) */
 .slider {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  overflow: hidden;
-  scroll-snap-type: x mandatory;
+  overflow-x: auto; /* Permite scroll horizontal */
+  scroll-snap-type: x mandatory; /* Habilita el snapping */
+  scroll-behavior: smooth;
+  gap: 2.5rem; /* Espaciado generoso entre tarjetas */
+  padding-bottom: 1.5rem; /* Espacio para la barra de scroll si aparece */
+  padding-left: 2.5rem; /* Padding a los lados para que no inicie pegado */
+  padding-right: 2.5rem;
+  -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+  scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
+  max-width: 1200px; /* Ancho máximo para el slider */
+  margin: 0 auto;
+}
+.slider::-webkit-scrollbar {
+  display: none; /* Oculta la barra de scroll en WebKit */
 }
 
+/* Tarjeta individual */
 .card {
-  background-color: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 500px;
-  width: 100%;
-  flex-shrink: 0;
-  scroll-snap-align: center;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-background); /* Fondo blanco */
+  border: 1px solid var(--border-color); /* Borde sutil */
+  border-radius: 1.25rem; /* Bordes redondeados */
+  padding: 2.5rem; /* Padding generoso dentro de la tarjeta */
+  max-width: 450px; /* Ancho máximo para cada tarjeta */
+  min-width: 320px; /* Ancho mínimo para la tarjeta */
+  width: 100%; /* Flexible */
+  flex-shrink: 0; /* Evita que la tarjeta se encoja */
+  scroll-snap-align: center; /* Alinea al centro al hacer scroll */
+  box-shadow: var(--shadow-md); /* Sombra estándar */
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.card.active {
-  opacity: 1;
-  transform: scale(1);
+.card:hover {
+  box-shadow: var(--shadow-lg); /* Sombra más grande al hover */
+  transform: translateY(-5px); /* Efecto de elevación */
 }
 
-/* Parte superior: avatar + logo */
 .cardTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Más espacio */
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 9999px;
+  width: 56px; /* Avatar más grande */
+  height: 56px;
+  border-radius: 50%; /* Circular */
   object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--primary-color); /* Borde de color primario */
 }
 
 .logo {
-  height: 24px;
+  height: 36px; /* Logo más grande */
   object-fit: contain;
 }
 
-/* Cita */
 .quote {
-  font-size: 1.1rem;
+  font-size: 1.15rem; /* Tamaño de cita ajustado */
   font-style: italic;
-  font-family: 'Roboto', sans-serif;
-  color: #111827;
+  color: var(--text-dark); /* Color de texto oscuro para la cita */
+  line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex-grow: 1; /* Permite que la cita ocupe el espacio */
 }
 
-/* Autor */
 .authorInfo {
   text-align: left;
-  
+  margin-top: auto; /* Empuja la info del autor al final de la tarjeta */
 }
 
 .authorInfo strong {
   display: block;
-  font-size: 1rem;
+  font-size: 1.05rem; /* Tamaño de nombre ajustado */
   font-weight: 700;
-  color: #111827;
-  font-family: 'Nexa', sans-serif;
+  color: var(--text-dark); /* Color oscuro */
 }
 
 .authorInfo span {
-  font-size: 0.875rem;
-  color: #6b7280;
-  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem; /* Tamaño de rol ajustado */
+  color: var(--text-medium); /* Color intermedio */
+  margin-top: 0.25rem;
 }
 
-/* Botones de navegación */
+/* Controles de navegación (botones de flecha) */
 .controls {
-  margin-top: 2rem;
+  margin-top: 3rem; /* Margen superior ajustado */
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem; /* Espaciado entre botones */
 }
 
 .controls button {
-  background: white;
-  border: none;
+  background: var(--card-background); /* Fondo blanco */
+  border: 1px solid var(--border-color); /* Borde sutil */
   border-radius: 9999px;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
+  padding: 0.8rem 1.4rem; /* Padding ajustado */
+  font-size: 1.5rem; /* Flechas más grandes */
   cursor: pointer;
-  color: #4F46E5;
-  transition: background 0.2s ease;
+  color: var(--primary-color); /* Color primario para las flechas */
+  transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+  box-shadow: var(--shadow-sm); /* Sombra sutil */
 }
 
 .controls button:hover {
-  background-color: #e5e7eb;
+  background-color: var(--background-color); /* Fondo gris claro al hover */
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 1024px) { /* Tablets */
+  .testimonials {
+    padding: 4rem 1.5rem;
+  }
+  .heading {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
   .slider {
-    flex-direction: row;
-    overflow-x: auto;
+    gap: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
-
   .card {
-    min-width: 80%;
+    min-width: 300px;
+    padding: 2rem;
   }
+  .quote {
+    font-size: 1.05rem;
+  }
+  .controls {
+    margin-top: 2rem;
+  }
+}
 
-  .authorInfo {
-    text-align: center;
+@media (max-width: 768px) { /* Móviles */
+  .testimonials {
+    padding: 3rem 1rem;
+  }
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .slider {
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    scroll-snap-align: start; /* Asegura el snap en móvil */
+  }
+  .card {
+    min-width: 85vw; /* Ocupa la mayor parte del ancho de la vista */
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transform: none !important; /* Deshabilita transform al hover en móvil */
+    box-shadow: var(--shadow-md) !important; /* Mantiene sombra md */
+  }
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+  .logo {
+    height: 30px;
+  }
+  .quote {
+    font-size: 1rem;
+  }
+  .authorInfo strong {
+    font-size: 1rem;
+  }
+  .authorInfo span {
+    font-size: 0.85rem;
+  }
+  .controls {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+  .controls button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
   }
 }

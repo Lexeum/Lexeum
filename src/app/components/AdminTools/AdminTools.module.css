@@ -4,6 +4,7 @@
   color: #0f172a;
 }
 
+/* Grid general */
 .grid {
   display: flex;
   gap: 2rem;
@@ -12,7 +13,7 @@
   flex-wrap: wrap;
 }
 
-/* Columna izquierda: card principal */
+/* Columna izquierda: tarjeta grande */
 .main {
   flex: 2 1 600px;
   aspect-ratio: 16 / 9;
@@ -22,7 +23,7 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Columna derecha: dos pequeñas */
+/* Columna derecha: dos tarjetas pequeñas */
 .rightColumn {
   flex: 1 1 300px;
   display: flex;
@@ -30,16 +31,23 @@
   gap: 2rem;
 }
 
-/* Cards pequeñas */
+/* Tarjetas pequeñas */
 .small {
   aspect-ratio: 16 / 9;
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Imagen común */
+.small:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen común en las cards */
 .bgImage {
   width: 100%;
   height: 100%;
@@ -48,7 +56,7 @@
   inset: 0;
 }
 
-/* Overlay común */
+/* Overlay de texto */
 .overlay {
   position: absolute;
   bottom: 1.5rem;
@@ -63,7 +71,7 @@
 .overlay h4 {
   font-weight: 700;
   margin-bottom: 0.5rem;
-  font-family: 'Nexa', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .overlay p {
@@ -80,5 +88,15 @@
   .main,
   .small {
     aspect-ratio: 16 / 9;
+  }
+
+  .rightColumn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .small {
+    flex: 1 1 100%;
   }
 }

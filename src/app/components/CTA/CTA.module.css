@@ -1,77 +1,113 @@
 .cta {
-  background-color: #E5E7EB;
-  border-radius: 1.25rem;
-  padding: 4rem 2rem;
+  background-color: var(--card-background); /* Fondo blanco consistente */
+  border: 1px solid var(--border-color); /* Borde sutil */
+  border-radius: 1.5rem; /* Border-radius consistente con tarjetas */
+  padding: 4.5rem 2.5rem; /* Padding generoso */
   text-align: center;
   max-width: 960px;
   margin: 0 auto;
-  color: #1D1B3B;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  color: var(--text-dark); /* Color de texto general */
+  box-shadow: var(--shadow-lg); /* Sombra consistente */
+  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  box-sizing: border-box;
 }
 
 .heading {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: #1D1B3B;
-  font-family: 'Nexa', sans-serif;
+  font-size: 2rem; /* Tamaño consistente con títulos de sección */
+  font-weight: 800; /* Peso consistente */
+  color: var(--text-dark);
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .subheading {
-  font-size: 1.125rem;
+  font-size: 1.05rem; /* Tamaño consistente con subtítulos */
   font-weight: 500;
-  margin-bottom: 2rem;
-  font-family: 'Roboto', sans-serif;
-  color: #1D1B3B;
+  margin-bottom: 2.5rem; /* Margen inferior ajustado */
+  color: var(--text-medium); /* Color de texto intermedio */
+  line-height: 1.6;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem; /* Espaciado entre botones consistente */
 }
 
+/* BOTÓN PRINCIPAL (Reutilizado de Hero, con nombres genéricos) */
 .primary {
-  background-color: #4F46E5;
+  background-color: var(--primary-color); /* Color primario */
   color: white;
-  padding: 0.75rem 2rem;
+  padding: 0.9rem 2.25rem; /* Padding consistente */
   border: none;
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem; /* Tamaño de fuente consistente */
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .primary:hover {
-  background-color: #4338ca;
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
 }
 
+/* BOTÓN SECUNDARIO (Reutilizado de Hero, con nombres genéricos) */
 .secondary {
-  background-color: white;
-  color: #4F46E5;
-  padding: 0.75rem 2rem;
-  border: 2px solid #4F46E5;
+  background-color: var(--background-color); /* Fondo gris claro */
+  color: var(--primary-color); /* Texto color primario */
+  padding: 0.8rem 2.15rem; /* Padding ajustado por el borde */
+  border: 2px solid var(--primary-color); /* Borde de color primario */
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .secondary:hover {
-  background-color: #f3f4f6;
+  background-color: var(--primary-color); /* Fondo primario al hover */
+  color: white; /* Texto blanco al hover */
+  transform: translateY(-2px);
 }
 
-@media (max-width: 640px) {
+/* ==================================== */
+/* RESPONSIVE DESIGN                  */
+/* ==================================== */
+
+@media (max-width: 768px) {
+  .cta {
+    padding: 3rem 1.5rem;
+    border-radius: 1rem;
+  }
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+  .subheading {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
   .actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
   }
-
   .primary,
   .secondary {
     width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta {
+    padding: 2.5rem 1rem;
+  }
+  .heading {
+    font-size: 1.6rem;
   }
 }

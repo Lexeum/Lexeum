@@ -1,32 +1,61 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
+import { useSession, signOut } from 'next-auth/react';
 
 // Importá los modales
 import LoginModal from '../../login/page';
 import RegisterModal from '../../register/page';
 
-
 export default function Navbar() {
+  const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const pathname = usePathname();
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+  }, []);
+
+  const handleShowLogin = useCallback(() => {
+    closeMenu();
+    setShowLogin(true);
+  }, [closeMenu]);
+
+  const handleShowRegister = useCallback(() => {
+    closeMenu();
+    setShowRegister(true);
+  }, [closeMenu]);
+
+  const handleCloseLogin = useCallback(() => setShowLogin(false), []);
+  const handleCloseRegister = useCallback(() => setShowRegister(false), []);
+
+  const handleSwitchToRegister = useCallback(() => {
+    setShowLogin(false);
+    setShowRegister(true);
+  }, []);
+
+  const handleSwitchToLogin = useCallback(() => {
+    setShowRegister(false);
+    setShowLogin(true);
+  }, []);
 
   return (
     <>
       <header className={styles.navbar}>
-        <div className={styles.logo}>
+        <Link href="/" className={styles.logo} onClick={closeMenu}>
           <img src="/Recurso 20.svg" alt="Logo LEXEUM" className={styles.logoImg} />
           LEXEUM
-        </div>
+        </Link>
 
-        <div className={styles.menuToggle} onClick={toggleMenu}>
+        <div className={`${styles.menuToggle} ${menuOpen ? styles.open : ''}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
@@ -50,51 +79,54 @@ export default function Navbar() {
               Contacto
             </Link>
           </nav>
+          {session?.user ? (
+            <div className={styles.authButtons}>
+              <Link href="/dashboard" className={styles.register}>
+                Ir al Dashboard
+              </Link>
+              <button
+                className={styles.login}
+                onClick={() => signOut()}
+              >
+                Salir
+              </button>
+            </div>
+          ) : (
+            <div className={styles.authButtons}>
+              <button
+                className={styles.login}
+                onClick={handleShowLogin}
+              >
+                Acceso
+              </button>
+              <button
+                className={styles.register}
+                onClick={handleShowRegister}
+              >
+                Inscribirse
+              </button>
+            </div>
+          )}
 
-          <div className={styles.authButtons}>
-            <button
-              className={styles.login}
-              onClick={() => {
-                closeMenu();
-                setShowLogin(true);
-              }}
-            >
-              Acceso
-            </button>
 
-            <button
-              className={styles.register}
-              onClick={() => {
-                closeMenu();
-                setShowRegister(true);
-              }}
-            >
-              Inscribirse
-            </button>
-          </div>
+
         </div>
       </header>
 
       {/* MODALES */}
       {showLogin && (
-  <LoginModal
-    onClose={() => setShowLogin(false)}
-    onSwitch={() => {
-      setShowLogin(false);
-      setShowRegister(true);
-    }}
-  />
-)}
+        <LoginModal
+          onClose={handleCloseLogin}
+          onSwitch={handleSwitchToRegister}
+        />
+      )}
 
-{showRegister && (
-  <RegisterModal
-    onClose={() => setShowRegister(false)}
-    onSwitch={() => {
-      setShowRegister(false);
-      setShowLogin(true);
-    }}
-  />
-)}
+      {showRegister && (
+        <RegisterModal
+          onClose={handleCloseRegister}
+          onSwitch={handleSwitchToLogin}
+        />
+      )}
     </>
   );
 }
