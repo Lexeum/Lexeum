@@ -20,7 +20,7 @@ export default function ChatPage() {
         id: Date.now(),
         title: 'Consulta de contrato',
         messages: [
-          { type: 'bot', text: 'Hola, soy tu asistente legal con IA. ¿En qué puedo ayudarte hoy?' },
+          { type: 'bot', text: 'Hola, soy tu asistente legal con IA. ¿En qué puedo ayudarte hoy? ' },
         ],
       },
     ];
