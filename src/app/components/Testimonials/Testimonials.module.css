@@ -1,174 +1,169 @@
-/* ==================================== */
-/* VARIABLES DE COLOR (Reutilizadas)  */
-/* ==================================== */
-/* Asegúrate que estas variables estén definidas en tu global.css o en un archivo central. */
 :root {
-  --primary-color: #4F46E5; /* Azul/Púrpura principal */
+  --primary-color: #4F46E5;
   --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B; /* Color oscuro para botones/texto principal */
+  --secondary-color: #1D1B3B;
   --secondary-hover-color: #2d2b5c;
   --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
-  --text-dark: #1a202c; /* Texto muy oscuro */
-  --text-medium: #374151; /* Texto secundario */
-  --text-light: #6b7280; /* Texto gris */
-  --background-color: #f9fafb; /* Fondo general de la app */
-  --card-background: #ffffff; /* Fondo de tarjetas */
-  --border-color: #e5e7eb; /* Bordes */
+  --accent-blue-light: #e0e7ff;
+  --danger-color: #ef4444;
+
+  --text-dark: #1a202c;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-subtle: #9ca3af;
+
+  --background-color: #f9fafb;
+  --card-background: #ffffff;
+  --badge-natural-bg: #E5E7EB;
+
+  --border-color: #e5e7eb;
+  --divider-color: #e5e7eb;
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --gradient-start-color: #E5E7EB; /* Reutilizando el color original del gradiente */
+
+  --gradient-start-color: #E5E7EB;
   --gradient-mid-color: var(--primary-color);
   --gradient-end-color: var(--secondary-color);
 }
 
-/* SECCIÓN PRINCIPAL */
 .testimonials {
-  padding: 5rem 2.5rem; /* Padding amplio y consistente */
-  /* Fondo con el gradiente, usando variables */
+  padding: 5rem 2.5rem;
   background: linear-gradient(
     135deg,
     var(--gradient-start-color) 0%,
     var(--gradient-mid-color) 40%,
     var(--gradient-end-color) 100%
   );
-  color: white; /* Texto blanco por defecto para la sección */
+  color: white;
   text-align: center;
   overflow: hidden;
-  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
 }
 
-/* Título de la sección */
 .heading {
-  font-size: 2.5rem; /* Tamaño de título grande y consistente */
-  font-weight: 800; /* Peso grueso */
-  color: white; /* Color blanco para contraste con el gradiente */
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
   margin-bottom: 3rem;
   line-height: 1.2;
 }
 
-/* Carrusel de tarjetas (slider) */
 .slider {
   display: flex;
-  overflow-x: auto; /* Permite scroll horizontal */
-  scroll-snap-type: x mandatory; /* Habilita el snapping */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  gap: 2.5rem; /* Espaciado generoso entre tarjetas */
-  padding-bottom: 1.5rem; /* Espacio para la barra de scroll si aparece */
-  padding-left: 2.5rem; /* Padding a los lados para que no inicie pegado */
+  gap: 2.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2.5rem;
   padding-right: 2.5rem;
-  -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
-  scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
-  max-width: 1200px; /* Ancho máximo para el slider */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .slider::-webkit-scrollbar {
-  display: none; /* Oculta la barra de scroll en WebKit */
+  display: none;
 }
 
-/* Tarjeta individual */
 .card {
-  background-color: var(--card-background); /* Fondo blanco */
-  border: 1px solid var(--border-color); /* Borde sutil */
-  border-radius: 1.25rem; /* Bordes redondeados */
-  padding: 2.5rem; /* Padding generoso dentro de la tarjeta */
-  max-width: 450px; /* Ancho máximo para cada tarjeta */
-  min-width: 320px; /* Ancho mínimo para la tarjeta */
-  width: 100%; /* Flexible */
-  flex-shrink: 0; /* Evita que la tarjeta se encoja */
-  scroll-snap-align: center; /* Alinea al centro al hacer scroll */
-  box-shadow: var(--shadow-md); /* Sombra estándar */
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  max-width: 450px;
+  min-width: 320px;
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg); /* Sombra más grande al hover */
-  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
 }
 
 .cardTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem; /* Más espacio */
+  margin-bottom: 1.5rem;
 }
 
 .avatar {
-  width: 56px; /* Avatar más grande */
+  width: 56px;
   height: 56px;
-  border-radius: 50%; /* Circular */
+  border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  border: 2px solid var(--primary-color); /* Borde de color primario */
+  border: 2px solid var(--primary-color);
 }
 
 .logo {
-  height: 36px; /* Logo más grande */
+  height: 36px;
   object-fit: contain;
 }
 
 .quote {
-  font-size: 1.15rem; /* Tamaño de cita ajustado */
+  font-size: 1.15rem;
   font-style: italic;
-  color: var(--text-dark); /* Color de texto oscuro para la cita */
+  color: var(--text-dark);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  flex-grow: 1; /* Permite que la cita ocupe el espacio */
+  flex-grow: 1;
 }
 
 .authorInfo {
   text-align: left;
-  margin-top: auto; /* Empuja la info del autor al final de la tarjeta */
+  margin-top: auto;
 }
 
 .authorInfo strong {
   display: block;
-  font-size: 1.05rem; /* Tamaño de nombre ajustado */
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-dark); /* Color oscuro */
+  color: var(--text-dark);
 }
 
 .authorInfo span {
-  font-size: 0.95rem; /* Tamaño de rol ajustado */
-  color: var(--text-medium); /* Color intermedio */
+  font-size: 0.95rem;
+  color: var(--text-medium);
   margin-top: 0.25rem;
 }
 
-/* Controles de navegación (botones de flecha) */
 .controls {
-  margin-top: 3rem; /* Margen superior ajustado */
+  margin-top: 3rem;
   display: flex;
   justify-content: center;
-  gap: 1.5rem; /* Espaciado entre botones */
+  gap: 1.5rem;
 }
 
 .controls button {
-  background: var(--card-background); /* Fondo blanco */
-  border: 1px solid var(--border-color); /* Borde sutil */
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 9999px;
-  padding: 0.8rem 1.4rem; /* Padding ajustado */
-  font-size: 1.5rem; /* Flechas más grandes */
+  padding: 0.8rem 1.4rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: var(--primary-color); /* Color primario para las flechas */
+  color: var(--primary-color);
   transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
-  box-shadow: var(--shadow-sm); /* Sombra sutil */
+  box-shadow: var(--shadow-sm);
 }
 
 .controls button:hover {
-  background-color: var(--background-color); /* Fondo gris claro al hover */
+  background-color: var(--background-color);
   border-color: var(--primary-color);
   transform: translateY(-2px);
 }
 
-/* ==================================== */
-/* RESPONSIVE DESIGN                  */
-/* ==================================== */
-
-@media (max-width: 1024px) { /* Tablets */
+@media (max-width: 1024px) {
   .testimonials {
     padding: 4rem 1.5rem;
   }
@@ -193,7 +188,7 @@
   }
 }
 
-@media (max-width: 768px) { /* Móviles */
+@media (max-width: 768px) {
   .testimonials {
     padding: 3rem 1rem;
   }
@@ -205,15 +200,15 @@
     gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    scroll-snap-align: start; /* Asegura el snap en móvil */
+    scroll-snap-align: start;
   }
   .card {
-    min-width: 85vw; /* Ocupa la mayor parte del ancho de la vista */
+    min-width: 85vw;
     max-width: 100%;
     padding: 1.5rem;
     border-radius: 1rem;
-    transform: none !important; /* Deshabilita transform al hover en móvil */
-    box-shadow: var(--shadow-md) !important; /* Mantiene sombra md */
+    transform: none !important;
+    box-shadow: var(--shadow-md) !important;
   }
   .card:hover {
     transform: none;

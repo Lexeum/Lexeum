@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import DashboardHome from './dashboardhome/dashboardhome'; 
 
 export default function CheckTokenClient() {
   useEffect(() => {
@@ -11,7 +12,13 @@ export default function CheckTokenClient() {
     console.log('🔑 Token JWT:', token);
   }, []);
 
-  return null;
+  return (
+    <>
+      <DashboardHome />
+    </>
+  );
   
   
 }
+
+

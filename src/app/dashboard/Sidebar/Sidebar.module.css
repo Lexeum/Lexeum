@@ -1,79 +1,76 @@
-/* ==================================== */
-/* VARIABLES DE COLOR (Reutilizadas)  */
-/* ==================================== */
-
 :root {
   --primary-color: #4F46E5;
   --primary-hover-color: #3e38c4;
   --secondary-color: #1D1B3B;
   --secondary-hover-color: #2d2b5c;
   --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff; /* Ajustado para un azul más suave */
+  --accent-blue-light: #e0e7ff;
+  --danger-color: #ef4444;
+
   --text-dark: #1a202c;
   --text-medium: #374151;
   --text-light: #6b7280;
   --text-subtle: #9ca3af;
+
   --background-color: #f9fafb;
   --card-background: #ffffff;
+  --badge-natural-bg: #E5E7EB;
+
   --border-color: #e5e7eb;
   --divider-color: #e5e7eb;
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --danger-color: #ef4444; /* Rojo para el botón de cerrar sesión */
-}
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-/* ==================================== */
-/* SIDEBAR (NAV)                      */
-/* ==================================== */
+  --gradient-start-color: #E5E7EB;
+  --gradient-mid-color: var(--primary-color);
+  --gradient-end-color: var(--secondary-color);
+}
 
 .sidebar {
   width: 250px;
   min-height: 100vh;
   background-color: var(--card-background);
   border-right: 1px solid var(--border-color);
-  box-shadow: var(--shadow-md); /* Agregamos sombra para darle profundidad */
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
-  /* La transición se aplica a todas las propiedades que cambian */
   transition: width 0.3s ease, transform 0.3s ease;
   position: relative;
-  font-family: 'Inter', sans-serif; /* Usamos la fuente consistente */
+  font-family: 'Inter', sans-serif;
   z-index: 100;
 }
 
-/* Estado colapsado */
 .collapsed {
-  width: 72px; /* Ancho más compacto */
+  width: 72px;
 }
 
-/* Sección superior con logo y botón */
 .topSection {
-  height: 60px; /* Un poco más de altura */
-  display: flex;
+  height: 60px;
   align-items: center;
-  justify-content: space-between; /* Alinea los elementos al espacio disponible */
+  justify-content: space-between;
   gap: 1rem;
-  padding: 0 1.5rem; /* Ajuste de padding */
+  padding: 0 1.5rem;
   border-bottom: 1px solid var(--divider-color);
 }
 
 .collapsed .topSection {
-  justify-content: center; /* Centra el botón cuando está colapsado */
+  justify-content: center;
   padding: 0;
 }
 
 .logo {
-  font-size: 1.5rem; /* Logo más grande */
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--secondary-color);
   margin: 0;
-  /* Transición para que el texto se esconda suavemente */
   transition: opacity 0.3s ease;
 }
 
 .collapsed .logo {
   opacity: 0;
-  pointer-events: none; /* Deshabilita clics en el logo oculto */
+  pointer-events: none;
 }
 
 .toggleBtn {
@@ -82,7 +79,7 @@
   font-size: 1.25rem;
   cursor: pointer;
   color: var(--text-medium);
-  padding: 0.5rem; /* Un poco de padding para hacer el área de clic más grande */
+  padding: 0.5rem;
   border-radius: 50%;
   transition: background-color 0.2s ease;
 }
@@ -91,21 +88,20 @@
   background-color: var(--background-color);
 }
 
-/* Contenedor del menú */
 .menu {
   flex-grow: 1;
-  padding: 1rem 0.5rem; /* Padding lateral ajustado */
-  overflow-y: auto; /* Permite scroll si hay muchos ítems */
+  padding: 1rem 0.5rem;
+  overflow-y: auto;
 }
 
 .menu::-webkit-scrollbar {
   width: 6px;
 }
 .menu::-webkit-scrollbar-thumb {
-  background-color: transparent; /* Oculta la barra por defecto */
+  background-color: transparent;
 }
 .menu:hover::-webkit-scrollbar-thumb {
-  background-color: var(--text-subtle); /* Muestra la barra al hacer hover */
+  background-color: var(--text-subtle);
   border-radius: 3px;
 }
 .menu {
@@ -116,22 +112,20 @@
   scrollbar-color: var(--text-subtle) transparent;
 }
 
-
-/* Ítem del menú */
 .item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.9rem 1.25rem; /* Aumentamos el padding para más espacio vertical */
-  margin: 0 0.5rem; /* Margen para crear espacio alrededor de los ítems */
-  border-radius: 0.75rem; /* Bordes más redondeados */
+  padding: 0.9rem 1.25rem;
+  margin: 0 0.5rem;
+  border-radius: 0.75rem;
   color: var(--text-medium);
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
   white-space: nowrap;
-  text-decoration: none; /* Para los Link de Next.js */
+  text-decoration: none;
 }
 
 .item:hover {
@@ -140,12 +134,11 @@
 }
 
 .item svg {
-  font-size: 1.25rem; /* Íconos un poco más grandes */
-  stroke-width: 1.8; /* Menos grosor de línea */
-  flex-shrink: 0; /* Evita que el ícono se encoja */
+  font-size: 1.25rem;
+  stroke-width: 1.8;
+  flex-shrink: 0;
 }
 
-/* Ítem activo */
 .active {
   background-color: var(--accent-blue-light);
   color: var(--primary-color);
@@ -153,11 +146,10 @@
 }
 
 .active:hover {
-  background-color: var(--accent-blue-light); /* Evita que el hover cambie el color del activo */
+  background-color: var(--accent-blue-light);
   color: var(--primary-color);
 }
 
-/* Oculta el texto cuando está colapsado */
 .collapsed .item span {
   opacity: 0;
   width: 0;
@@ -165,7 +157,6 @@
   transition: opacity 0.1s ease, width 0.1s ease;
 }
 
-/* Título de la sección de menú */
 .menuSectionTitle {
   font-size: 0.8rem;
   font-weight: 600;
@@ -181,13 +172,11 @@
   display: none;
 }
 
-/* Sección inferior */
 .bottom {
   padding: 1rem 0.5rem;
   border-top: 1px solid var(--divider-color);
 }
 
-/* Botón de cerrar sesión */
 .logoutItem {
   color: var(--danger-color);
 }
@@ -197,10 +186,6 @@
   color: var(--danger-color);
 }
 
-/* ==================================== */
-/* RESPONSIVE DESIGN (MÓVIL)          */
-/* ==================================== */
-
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -208,15 +193,13 @@
     height: 100vh;
     left: 0;
     top: 0;
-    /* Comienza fuera de la pantalla */
     transform: translateX(-100%);
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
 
-  /* La clase `collapsed` ahora muestra la sidebar */
   .sidebar.collapsed {
     transform: translateX(0);
-    width: 250px; /* En móvil, muestra la sidebar expandida */
+    width: 250px;
   }
 
   .collapsed .logo {

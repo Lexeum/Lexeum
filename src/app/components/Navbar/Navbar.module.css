@@ -1,75 +1,79 @@
-/* ==================================== */
-/* VARIABLES DE COLOR (Reutilizadas de tu proyecto) */
-/* ==================================== */
-/* Asumo que estas variables están definidas en tu global.css o en un archivo central.
-   Las defino aquí nuevamente para que sea claro qué colores se usan. */
 :root {
-  --primary-color: #4F46E5; /* Azul/Púrpura principal */
+  --primary-color: #4F46E5;
   --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B; /* Color oscuro para botones/texto principal */
+  --secondary-color: #1D1B3B;
   --secondary-hover-color: #2d2b5c;
   --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
-  --text-dark: #1a202c; /* Texto muy oscuro */
-  --text-medium: #374151; /* Texto secundario */
-  --text-light: #6b7280; /* Texto gris */
-  --background-color: #f9fafb; /* Fondo general de la app */
-  --card-background: #ffffff; /* Fondo de tarjetas, también para Navbar */
-  --border-color: #e5e7eb; /* Bordes */
+  --accent-blue-light: #e0e7ff;
+  --danger-color: #ef4444;
+
+  --text-dark: #1a202c;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-subtle: #9ca3af;
+
+  --background-color: #f9fafb;
+  --card-background: #ffffff;
+  --badge-natural-bg: #E5E7EB;
+
+  --border-color: #e5e7eb;
+  --divider-color: #e5e7eb;
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --gradient-start-color: #E5E7EB;
+  --gradient-mid-color: var(--primary-color);
+  --gradient-end-color: var(--secondary-color);
 }
 
-
 .navbar {
-  background-color: var(--card-background); /* Usamos variable de fondo de tarjeta */
-  padding: 1rem 2.5rem; /* Ajustamos padding para consistencia */
+  background-color: var(--card-background);
+  padding: 1rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  box-shadow: var(--shadow-sm); /* Sombra sutil */
-  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
-  z-index: 100; /* Asegura que la navbar esté por encima */
+  box-shadow: var(--shadow-sm);
+  font-family: 'Inter', sans-serif;
+  z-index: 100;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* Espaciado más amplio */
-  font-size: 1.6rem; /* Tamaño del logo */
-  font-weight: 700; /* Ajustamos a 700 para consistencia con Inter */
-  color: var(--secondary-color); /* Color oscuro para el logo */
-  text-decoration: none; /* Asegura que no tenga subrayado si es Link */
+  gap: 0.75rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  text-decoration: none;
   cursor: pointer;
 }
 
 .logoImg {
-  width: 38px; /* Tamaño más consistente */
+  width: 38px;
   height: auto;
 }
 
-/* Mobile hamburger */
 .menuToggle {
-  display: none; /* Por defecto oculto */
+  display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 6px; /* Espaciado entre las líneas */
-  padding: 5px; /* Área de clic más grande */
-  transition: transform 0.3s ease; /* Transición para rotación */
-  z-index: 101; /* Por encima del menú móvil */
+  gap: 6px;
+  padding: 5px;
+  transition: transform 0.3s ease;
+  z-index: 101;
 }
 
 .menuToggle span {
-  width: 28px; /* Largo de las líneas */
+  width: 28px;
   height: 3px;
-  background-color: var(--secondary-color); /* Color de las líneas */
+  background-color: var(--secondary-color);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-/* Animación de hamburguesa a "X" */
 .menuToggle.open span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -80,58 +84,52 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
-
-/* Menu wrapper (Desktop) */
 .menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2.5rem; /* Espaciado entre nav y botones */
+  gap: 2.5rem;
   flex: 1;
-  /* Transiciones solo para mobile */
 }
 
-/* Navigation links */
 .mainNav {
   display: flex;
   justify-content: center;
-  gap: 2rem; /* Espaciado entre enlaces */
-  flex: 1; /* Para que ocupe el espacio central */
-  font-size: 1rem; /* Tamaño de fuente para enlaces */
-  font-family: 'Inter', sans-serif; /* Unificamos la fuente */
+  gap: 2rem;
+  flex: 1;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
 }
 
 .mainNav a {
-  color: var(--text-medium); /* Color más suave para enlaces */
+  color: var(--text-medium);
   text-decoration: none;
   transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
 .mainNav a:hover {
-  color: var(--primary-color); /* Color principal al hover */
+  color: var(--primary-color);
 }
 .mainNav a.active {
   color: var(--primary-color);
-  font-weight: 600; /* Más grosor para activo */
+  font-weight: 600;
 }
 
-
-/* Botones de autenticación */
 .authButtons {
   display: flex;
   gap: 0.75rem;
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem; /* Tamaño de fuente para botones */
+  font-size: 0.95rem;
 }
 
 .login {
-  background-color: var(--background-color); /* Fondo gris claro */
-  color: var(--text-dark); /* Texto oscuro */
-  border: 1px solid var(--border-color); /* Borde sutil */
-  border-radius: 9999px; /* Forma de píldora */
+  background-color: var(--background-color);
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
   cursor: pointer;
-  padding: 0.6rem 1.25rem; /* Ajustar padding */
+  padding: 0.6rem 1.25rem;
   transition: all 0.2s ease;
 }
 .login:hover {
@@ -139,55 +137,50 @@
 }
 
 .register {
-  background-color: var(--primary-color); /* Color principal */
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
-  padding: 0.6rem 1.25rem; /* Ajustar padding */
+  padding: 0.6rem 1.25rem;
   transition: all 0.2s ease;
 }
 .register:hover {
   background-color: var(--primary-hover-color);
 }
 
-
-/* ==================================== */
-/* RESPONSIVE (Mobile)                */
-/* ==================================== */
-@media (max-width: 992px) { /* Tablet y móvil */
+@media (max-width: 992px) {
   .navbar {
-    padding: 1rem 1.5rem; /* Reducimos padding */
+    padding: 1rem 1.5rem;
   }
 
   .menuToggle {
-    display: flex; /* Muestra el hamburguesa */
+    display: flex;
   }
 
   .menu {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    top: 100%; /* Debajo de la navbar */
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--card-background); /* Fondo blanco */
-    padding: 1.5rem 2rem; /* Padding interno */
-    gap: 1.5rem; /* Espaciado entre secciones */
+    background-color: var(--card-background);
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
     
-    /* Estado inicial oculto y animado */
     height: 0;
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
     transition: height 0.3s ease-out, opacity 0.3s ease-out;
-    z-index: 99; /* Por debajo de la hamburguesa, pero sobre el contenido */
+    z-index: 99;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
     border-top: 1px solid var(--border-color);
   }
 
   .menu.open {
-    height: auto; /* Altura automática al abrir */
+    height: auto;
     opacity: 1;
     pointer-events: auto;
   }
@@ -196,13 +189,13 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 1rem; /* Espaciado entre enlaces */
+    gap: 1rem;
   }
 
   .mainNav a {
-    color: var(--text-dark); /* Color más oscuro para enlaces en mobile */
+    color: var(--text-dark);
     font-size: 1.1rem;
-    padding: 0.5rem 0; /* Más padding para clic */
+    padding: 0.5rem 0;
   }
 
   .authButtons {
@@ -213,9 +206,7 @@
 
   .authButtons button {
     width: 100%;
-    padding: 0.8rem 1.5rem; /* Botones más grandes en mobile */
+    padding: 0.8rem 1.5rem;
     font-size: 1rem;
   }
-
-  
 }

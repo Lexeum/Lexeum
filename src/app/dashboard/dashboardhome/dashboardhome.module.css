@@ -1,0 +1,447 @@
+/* Variables CSS para consistencia */
+:root {
+  --primary-color: #4F46E5; /* Azul/Púrpura principal */
+  --text-dark: #1D1B3B; /* Texto oscuro */
+  --text-medium: #374151; /* Texto secundario */
+  --text-light: #6b7280; /* Texto gris */
+  --background-color: #f9fafb; /* Fondo general */
+  --card-background: #ffffff; /* Fondo de tarjetas */
+  --border-color: #e5e7eb; /* Color de bordes */
+  --green-badge-bg: #dcfce7;
+  --green-badge-text: #15803d;
+  --yellow-badge-bg: #fef9c3;
+  --yellow-badge-text: #b45309;
+  --red-badge-bg: #fee2e2;
+  --red-badge-text: #b91c1c;
+  --blue-badge-bg: #e0f2fe;
+  --blue-badge-text: #0b9cd1;
+}
+
+/* Base y layout principal */
+.dashboard {
+  padding: 2.5rem; /* Aumentamos el padding para más espacio */
+  background-color: var(--background-color);
+  font-family: 'Inter', sans-serif; /* Cambiamos a Inter para un look moderno */
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* Encabezado con botones */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2rem; /* Título más grande */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.exportButton, .newCaseButton {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.exportButton {
+  background-color: transparent;
+  color: var(--text-dark);
+}
+
+.exportButton:hover {
+  background-color: #f3f4f6;
+}
+
+.newCaseButton {
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--primary-color);
+}
+
+.newCaseButton:hover {
+  background-color: #3e38c4;
+}
+
+/* Sección de resumen principal */
+.overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 1.5rem; /* Espaciado entre tarjetas */
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Sombra sutil */
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alineado a la izquierda */
+  gap: 0.5rem;
+}
+
+.card .icon {
+  width: 48px;
+  height: 48px;
+  background-color: #eef2ff; /* Color de fondo del ícono */
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.card h3 {
+  font-size: 1.8rem; /* Tamaño de la fuente */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.card span {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Contenido principal: tabla y sidebar */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Una columna para el panel y otra para el side */
+  gap: 2rem;
+}
+
+.panel, .calendarPanel {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.panelHeader h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.panelHeader a {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.panelHeader a:hover {
+  text-decoration: underline;
+}
+
+/* Tabla de casos */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 1rem 0; /* Más padding vertical */
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-medium);
+}
+
+.table th {
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.table td span {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Píldoras de estado (badges) */
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem; /* Más padding */
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.green {
+  background-color: var(--green-badge-bg);
+  color: var(--green-badge-text);
+}
+
+.yellow {
+  background-color: var(--yellow-badge-bg);
+  color: var(--yellow-badge-text);
+}
+
+.red {
+  background-color: var(--red-badge-bg);
+  color: var(--red-badge-text);
+}
+
+.blue {
+  background-color: var(--blue-badge-bg);
+  color: var(--blue-badge-text);
+}
+
+/* SIDEBAR: CALENDARIO Y EVENTOS */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.calendarTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.calendarNav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendarNavButton {
+  background: #f3f4f6;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+.calendarNavButton:hover {
+  background-color: #e5e7eb;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.dayOfWeek {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+.date {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.date:hover {
+  background-color: #f3f4f6;
+}
+
+.date.inactive {
+  color: #d1d5db;
+}
+
+.activeDate {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+/* Próximos eventos */
+.eventsPanel {
+  /* No se necesita padding extra ya que el padre side ya tiene gap */
+}
+
+.eventItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.eventIcon {
+  color: var(--text-light);
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventTitle {
+  font-weight: 600;
+}
+
+.eventTime {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* Documentos recientes */
+.docsPanel {
+  margin-top: 1.5rem; /* Separación con la sección superior */
+}
+
+.docsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.docItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+
+.docItem:last-child {
+  border-bottom: none;
+}
+
+.docInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.docIcon {
+  color: var(--text-light);
+}
+
+.docDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.docName {
+  font-weight: 500;
+  color: var(--text-medium);
+}
+
+.docModified {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.docActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.docActionStatus {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+}
+
+.docActionButton {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.docActionButton:hover {
+  background-color: #f3f4f6;
+}
+
+
+/* Media Queries para responsividad */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr; /* Apilamos las columnas en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 992px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .overview {
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+  }
+}
