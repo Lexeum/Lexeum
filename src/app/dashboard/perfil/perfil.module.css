@@ -1,14 +1,4 @@
 
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif; /* Usaremos Inter como una fuente moderna y limpia, similar a la imagen */
-  background-color: var(--background-light);
-  color: var(--primary-text-color);
-}
-
-
 .container {
   padding: 2.5rem; /* Aumentamos el padding general */
   max-width: 1200px; /* Ancho máximo para el layout de dos columnas */

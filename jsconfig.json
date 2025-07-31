@@ -2,14 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/utils/*": ["utils/*"],
-      "@/styles/*": ["styles/*"],
-      "@/*": ["src/*"] 
-    },
-    "jsx": "preserve",
-    "allowJs": true
-  },
-  "exclude": ["node_modules"]
+      "@/lib/*": ["./src/lib/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/*": ["./src/*"] // Esta también es útil para rutas generales como '@/app/globals.css'
+    }
+  }
+  // No olvides el resto de tu configuración si ya tienes el archivo
 }

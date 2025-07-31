@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import DashboardHome from './dashboardhome/dashboardhome'; 
 
+
 export default function CheckTokenClient() {
   useEffect(() => {
     const cookies = document.cookie;
