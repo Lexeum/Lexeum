@@ -16,44 +16,81 @@
   /* Colores Principales / Marca */
   --primary-color: #4F46E5; /* Azul/Púrpura principal */
   --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B; /* Color oscuro principal, utilizado también como fondo */
+  --secondary-color: #1D1B3B; /* Color oscuro principal (también usado como fondo) */
   --secondary-hover-color: #2d2b5c;
-  --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
+  --accent-blue: #3182ce; /* Azul para enlaces, acentos */
+  --accent-blue-light: #e0f2fe; /* Fondo claro para acento azul (última definición vista) */
   --danger-color: #ef4444; /* Rojo para acciones de peligro */
+  --danger-bg: #fee2e2; /* Fondo de peligro */
+  --danger-text: #b91c1c; /* Texto de peligro */
 
   /* Colores de Fondo */
-  --background-general: #f9fafb; /* Fondo general de la aplicación (anteriormente --background-color y --color-wg) */
-  --background-dark: #1D1B3B; /* Fondo oscuro (anteriormente --background-blue) */
-  --background-light-blue: #463fda; /* Azul claro de fondo (anteriormente --background-bluelight) */
-  --background-diamond: #E5E7EB; /* Color para fondos específicos o badges (anteriormente --background-diamond y --badge-natural-bg y --gradient-start-color) */
-  --card-background: #ffffff; /* Fondo para tarjetas y elementos blancos (anteriormente --card-background y --color-white) */
-  --danger-bg-light: rgba(239, 68, 68, 0.1); /* Fondo ligero para elementos de peligro */
+  --background-general: #f9fafb; /* Fondo general de la aplicación */
+  --background-dark: #1D1B3B; /* Fondo oscuro (ej. para el dashboard general) */
+  --background-light-blue: #463fda; /* Azul claro de fondo específico */
+  --background-diamond: #E5E7EB; /* Color para fondos específicos o badges (ej. inicio de gradiente) */
+  --card-background: #ffffff; /* Fondo para tarjetas y elementos blancos */
+  --button-secondary: #edf2f7; /* Fondo para botón secundario (si es diferente al general) */
+  --success-bg: #dcfce7; /* Fondo de éxito */
+  --warning-bg: #fef9c3; /* Fondo de advertencia */
 
   /* Colores de Texto */
-  --text-dark: #1a202c; /* Texto muy oscuro */
-  --text-medium: #374151; /* Texto secundario */
-  --text-light: #6b7280; /* Texto gris claro (anteriormente --text-light y --color-graylight) */
+  --text-dark: #1a202c; /* Texto muy oscuro (para títulos, texto principal) */
+  --text-medium: #374151; /* Texto secundario (labels, subtítulos) */
+  --text-light: #6b7280; /* Texto gris claro (información auxiliar) */
   --text-subtle: #9ca3af; /* Texto muy sutil/gris */
-  --text-gray: #475569; /* Gris (anteriormente --color-gray) */
-  --text-white: #ffffff; /* Blanco (si necesitas una variable específica para texto blanco) */
-  --text-danger: var(--danger-color); /* Color de texto para peligro */
+  --text-gray: #475569; /* Gris genérico (otro tono de gris) */
+  --text-white: #ffffff; /* Blanco */
+  --primary-text-color: #1a202c; /* Redundante con --text-dark, pero lo mantengo si se usa específicamente */
+  --secondary-text-color: #4a5568; /* Redundante con --text-medium, pero lo mantengo si se usa específicamente */
+  --light-text-color: #718096; /* Redundante con --text-light, pero lo mantengo si se usa específicamente */
+  --success-text: #15803d; /* Texto de éxito */
+  --warning-text: #b45309; /* Texto de advertencia */
 
   /* Bordes y Divisores */
-  --border-color: #e5e7eb;
-  --divider-color: #e5e7eb;
+  --border-color: #e5e7eb; /* Bordes */
+  --divider-color: #e5e7eb; /* Divisores */
 
   /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Sombra extra grande */
 
   /* Gradientes */
-  --gradient-start-color-full: var(--background-diamond); /* Renombrado para evitar conflicto si se usa --background-diamond directamente */
+  --gradient-start-color-full: var(--background-diamond);
   --gradient-mid-color: var(--primary-color);
   --gradient-end-color: var(--secondary-color);
-}
 
+  /* COLORES DE EVENTOS (Calendario) */
+  --event-purple: #c7d2fe;
+  --event-blue: #bfdbfe;
+  --event-green: #d1fae5;
+  --event-yellow: #fef3c7;
+  --event-red: #fee2e2;
+  --event-text: #1f2937;
+
+  /* COLORES DE TIPOS / ESTADO (Badges) */
+  --badge-natural-bg: #e2e8f0; /* Fondo para badge 'Natural' / 'Gray' */
+  --badge-natural-text: #4b5563; /* Texto para badge 'Natural' / 'Gray' */
+  --badge-juridica-bg: #dbeafe; /* Fondo para badge 'Jurídica' / 'Blue' */
+  --badge-juridica-text: #1e40af; /* Texto para badge 'Jurídica' / 'Blue' */
+  --badge-green-bg: #dcfce7;
+  --badge-green-text: #15803d;
+  --badge-yellow-bg: #fef9c3;
+  --badge-yellow-text: #b45309;
+  --badge-red-bg: #fee2e2;
+  --badge-red-text: #b91c1c;
+  --badge-blue-bg: #dbeafe; /* Repite juridica-bg, se mantiene por si hay un uso diferente */
+  --badge-blue-text: #1e40af; /* Repite juridica-text, se mantiene por si hay un uso diferente */
+  --badge-gray-bg: #e5e7eb; /* Repite natural-bg, se mantiene por si hay un uso diferente */
+  --badge-gray-text: #4b5563; /* Repite natural-text, se mantiene por si hay un uso diferente */
+
+  /* COLORES ESPECÍFICOS DE BOTONES (si no están cubiertos por primary/secondary) */
+  --button-primary: var(--text-dark); /* Color para botón principal (texto oscuro en tu definición) */
+  --active-pill-background: #e6fffa; /* Fondo para píldora "Activo" */
+  --active-pill-text: #38b2ac; /* Texto para píldora "Activo" */
+}
 html, body {
   margin: 0;
   padding: 0;
