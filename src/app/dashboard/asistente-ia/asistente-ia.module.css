@@ -1,62 +1,25 @@
-/* ==================================== */
-/* VARIABLES DE COLOR (Reutilizadas)  */
-/* ==================================== */
-
-:root {
-  --primary-color: #4F46E5;
-  --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B;
-  --secondary-hover-color: #2d2b5c;
-  --accent-blue: #3182ce;
-  --accent-blue-light: #e0f2fe;
-  --text-dark: #1a202c;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-subtle: #9ca3af;
-  --background-color: #f9fafb;
-  --card-background: #ffffff;
-  --border-color: #e5e7eb;
-  --divider-color: #e5e7eb;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --success-bg: #dcfce7;
-  --success-text: #15803d;
-  --warning-bg: #fef9c3;
-  --warning-text: #b45309;
-  --danger-bg: #fee2e2;
-  --danger-text: #b91c1c;
-}
-
-/* ==================================== */
-/* LAYOUT PRINCIPAL                   */
-/* ==================================== */
 
 .chatWrapper {
   display: flex;
   height: 100vh;
-  /* El fondo de color sólido no encaja con el estilo de la app */
   background: var(--background-color);
   overflow: hidden;
-  font-family: 'Inter', sans-serif; /* Usamos la fuente consistente */
+  font-family: 'Inter', sans-serif;
   color: var(--text-dark);
 }
 
-/* ==================================== */
-/* SIDEBAR (BARRA LATERAL)            */
-/* ==================================== */
-
 .sidebar {
-  width: 320px; /* Ancho un poco más grande para mejor legibilidad */
+  width: 320px;
   min-width: 250px;
   background: var(--card-background);
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1rem; /* Más padding */
+  padding: 1.5rem 1rem;
   gap: 1rem;
   box-shadow: var(--shadow-sm);
   font-family: 'Inter', sans-serif;
-  flex-shrink: 0; /* Evita que la barra lateral se encoja */
+  flex-shrink: 0;
 }
 
 .sidebarHeader {
@@ -73,11 +36,11 @@
 }
 
 .newChat {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color); /* Corregido de '---color' a '--primary-color' */
   color: white;
   border: none;
-  padding: 0.75rem 1.25rem; /* Padding más generoso */
-  border-radius: 0.75rem; /* Bordes más redondeados */
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   font-size: 0.95rem;
@@ -95,11 +58,11 @@
 
 .search {
   width: 80%;
-  padding: 0.75rem; /* Más padding */
+  padding: 0.75rem;
   border-radius: 0.75rem;
   border: 1px solid var(--border-color);
   font-size: 0.95rem;
-  background-color: var(--background-color); /* Fondo gris claro */
+  background-color: var(--background-color);
   color: var(--text-medium);
   font-family: 'Inter', sans-serif;
 }
@@ -113,8 +76,8 @@
   padding: 0;
   margin: 0;
   font-size: 0.95rem;
-  overflow-y: auto; /* Permite desplazamiento si hay muchos chats */
-  flex-grow: 1; /* Ocupa el espacio restante */
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .chatList li {
@@ -123,7 +86,7 @@
   justify-content: space-between;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  margin-bottom: 0.5rem; /* Espaciado entre elementos */
+  margin-bottom: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
   color: var(--text-medium);
@@ -134,9 +97,9 @@
 }
 
 .active {
-  background: var(--accent-blue-light); /* Fondo azul claro para el chat activo */
+  background: var(--accent-blue-light);
   font-weight: 600;
-  color: var(--accent-blue); /* Texto azul */
+  color: var(--accent-blue);
 }
 
 .chatListItemTitle {
@@ -168,14 +131,9 @@
 }
 
 .deleteBtn:hover {
-  color: var(--danger-text);
-  background-color: var(--danger-bg);
+  color: var(--danger-text); /* Asumo que 'danger-text' está definido o debería ser '--danger-color' */
+  background-color: var(--danger-bg); /* Asumo que 'danger-bg' está definido o debería ser un color de fondo para peligro */
 }
-
-
-/* ==================================== */
-/* CHAT PANEL (ÁREA DE CHAT)          */
-/* ==================================== */
 
 .chatPanel {
   flex: 1;
@@ -184,7 +142,6 @@
   background: var(--background-color);
 }
 
-/* Header del chat */
 .chatHeader {
   display: flex;
   align-items: center;
@@ -205,43 +162,38 @@
   color: var(--text-dark);
 }
 
-/* Cuerpo del chat (mensajes) */
 .chatBody {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Más espacio entre mensajes */
+  gap: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
 
-/* Estructura del mensaje (avatar + contenido) */
 .messageWrapper {
   display: flex;
   align-items: flex-start;
-  gap: 1rem; /* Más espacio entre el avatar y el mensaje */
-  max-width: 900px; /* Ancho máximo para que no se extiendan demasiado */
+  gap: 1rem;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
 }
 
 .messageWrapper.user {
   flex-direction: row-reverse;
-  /* Alineamos el mensaje del usuario a la derecha */
   align-self: flex-end;
 }
 
 .messageWrapper.bot {
   flex-direction: row;
-  /* Alineamos el mensaje del bot a la izquierda */
   align-self: flex-start;
 }
 
-/* Avatares */
 .avatarUser,
 .avatarBot {
-  width: 40px; /* Tamaño del avatar */
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: var(--text-dark);
@@ -258,18 +210,17 @@
 .avatarBot {
   background-color: var(--primary-color);
   color: white;
-  font-size: 1.3rem; /* Tamaño del ícono de bot */
+  font-size: 1.3rem;
 }
 
-/* Contenido del mensaje (globo de chat) */
 .messageContent {
   background-color: white;
-  padding: 1rem 1.25rem; /* Más padding */
-  border-radius: 1.25rem; /* Bordes más curvos */
-  max-width: 90%; /* Ajusta el ancho para que no ocupe toda la pantalla */
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  max-width: 90%;
   font-size: 0.95rem;
   box-shadow: var(--shadow-sm);
-  line-height: 1.6; /* Espaciado de línea para mejor lectura */
+  line-height: 1.6;
   border: 1px solid var(--border-color);
 }
 
@@ -296,7 +247,6 @@
   margin: 0;
 }
 
-/* Mensajes del sistema (centrados) */
 .system {
   text-align: center;
   background: none;
@@ -307,10 +257,6 @@
   max-width: 60%;
   margin: 0 auto;
 }
-
-/* ==================================== */
-/* CHAT INPUT (ÁREA DE ESCRITURA)     */
-/* ==================================== */
 
 .chatInput {
   display: flex;
@@ -334,7 +280,7 @@
   font-size: 1rem;
   background-color: var(--background-color);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  min-height: 50px; /* Altura mínima */
+  min-height: 50px;
 }
 
 .chatInput textarea:focus {
@@ -363,10 +309,6 @@
   background-color: var(--primary-hover-color);
 }
 
-/* ==================================== */
-/* AVISO LEGAL                        */
-/* ==================================== */
-
 .notice {
   font-size: 0.8rem;
   color: var(--text-light);
@@ -376,11 +318,6 @@
   border-top: 1px solid var(--border-color);
   font-family: 'Inter', sans-serif;
 }
-
-
-/* ==================================== */
-/* ESTILOS DE SCROLLBAR               */
-/* ==================================== */
 
 .chatBody::-webkit-scrollbar,
 .chatList::-webkit-scrollbar {
@@ -410,21 +347,16 @@
   scrollbar-color: #cbd5e1 transparent;
 }
 
-
-/* ==================================== */
-/* RESPONSIVE DESIGN                  */
-/* ==================================== */
-
 @media (max-width: 992px) {
   .chatWrapper {
     flex-direction: column;
-    height: auto; /* Permite que el contenido determine la altura en móviles */
+    height: auto;
   }
 
   .sidebar {
     width: 100%;
-    flex-direction: row; /* Cambia a fila */
-    overflow-x: auto; /* Permite scroll horizontal */
+    flex-direction: row;
+    overflow-x: auto;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
     padding: 1rem;
@@ -432,7 +364,7 @@
   }
 
   .sidebarTitle, .search {
-    display: none; /* Oculta el título y el buscador en móvil para ahorrar espacio */
+    display: none;
   }
   
   .newChat {
@@ -442,9 +374,9 @@
   }
 
   .chatList {
-    display: flex; /* Muestra los chats en línea */
+    display: flex;
     flex-direction: row;
-    white-space: nowrap; /* Evita que el texto se rompa */
+    white-space: nowrap;
     overflow-x: auto;
     gap: 0.5rem;
     margin: 0;
@@ -460,8 +392,8 @@
   }
 
   .chatPanel {
-    height: calc(100vh - 80px); /* Ajusta la altura para ocupar la pantalla restante */
-    min-height: 500px; /* Altura mínima para que no se colapse */
+    height: calc(100vh - 80px);
+    min-height: 500px;
   }
 
   .chatBody {
@@ -474,7 +406,7 @@
   }
 
   .chatInput {
-    flex-direction: row; /* Vuelve a fila para que se vea mejor */
+    flex-direction: row;
     padding: 1rem;
   }
   

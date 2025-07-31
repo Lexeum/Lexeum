@@ -1,38 +1,3 @@
-/* ==================================== */
-/* VARIABLES DE COLOR (Reutilizadas)  */
-/* ==================================== */
-
-:root {
-  --primary-color: #4F46E5;
-  --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B;
-  --secondary-hover-color: #2d2b5c;
-  --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff; 
-  --text-dark: #1a202c;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-subtle: #9ca3af;
-  --background-color: #f9fafb;
-  --card-background: #ffffff;
-  --border-color: #e5e7eb;
-  --divider-color: #e5e7eb;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-
-  /* COLORES DE EVENTOS */
-  --event-purple: #c7d2fe;
-  --event-blue: #bfdbfe;
-  --event-green: #d1fae5;
-  --event-yellow: #fef3c7;
-  --event-red: #fee2e2;
-  --event-text: #1f2937;
-}
-
-/* ==================================== */
-/* LAYOUT PRINCIPAL DEL CALENDARIO    */
-/* ==================================== */
-
 .calendarPageContainer {
   padding: 2.5rem;
   background-color: var(--background-color);

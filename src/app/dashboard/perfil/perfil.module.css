@@ -1,16 +1,4 @@
-:root {
-  --primary-text-color: #1a202c; /* Título principal, texto oscuro */
-  --secondary-text-color: #4a5568; /* Subtítulos, labels */
-  --light-text-color: #718096; /* Texto auxiliar, info */
-  --border-color: #e2e8f0; /* Bordes de tarjetas e inputs */
-  --background-light: #f7fafc; /* Fondo general */
-  --card-background: #ffffff; /* Fondo de tarjetas */
-  --button-primary: #1a202c; /* Botón principal */
-  --button-secondary: #edf2f7; /* Botón secundario */
-  --accent-blue: #3182ce; /* Azul para enlaces o acentos */
-  --active-pill-background: #e6fffa; /* Fondo para píldora "Activo" */
-  --active-pill-text: #38b2ac; /* Texto para píldora "Activo" */
-}
+
 
 body {
   margin: 0;

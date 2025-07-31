@@ -1,27 +1,4 @@
-/* ==================================== */
-/* VARIABLES DE COLOR (Reutilizadas)  */
-/* ==================================== */
-:root {
-  --primary-color: #4F46E5; /* Azul/Púrpura principal */
-  --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B; /* Color oscuro para botones/texto principal */
-  --secondary-hover-color: #2d2b5c;
-  --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
-  --text-dark: #1a202c; /* Texto muy oscuro */
-  --text-medium: #374151; /* Texto secundario */
-  --text-light: #6b7280; /* Texto gris */
-  --text-subtle: #9ca3af; /* Texto muy sutil */
-  --background-color: #f9fafb; /* Fondo general de la app */
-  --card-background: #ffffff; /* Fondo de tarjetas */
-  --border-color: #e5e7eb; /* Bordes */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
 
-/* FONDO OSCURO DEL MODAL */
 .overlay {
   position: fixed;
   inset: 0;
