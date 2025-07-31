@@ -1,21 +1,3 @@
-/* Variables CSS para consistencia */
-:root {
-  --primary-color: #4F46E5; /* Azul/Púrpura principal */
-  --text-dark: #1D1B3B; /* Texto oscuro */
-  --text-medium: #374151; /* Texto secundario */
-  --text-light: #6b7280; /* Texto gris */
-  --background-color: #f9fafb; /* Fondo general */
-  --card-background: #ffffff; /* Fondo de tarjetas */
-  --border-color: #e5e7eb; /* Color de bordes */
-  --green-badge-bg: #dcfce7;
-  --green-badge-text: #15803d;
-  --yellow-badge-bg: #fef9c3;
-  --yellow-badge-text: #b45309;
-  --red-badge-bg: #fee2e2;
-  --red-badge-text: #b91c1c;
-  --blue-badge-bg: #e0f2fe;
-  --blue-badge-text: #0b9cd1;
-}
 
 /* Base y layout principal */
 .dashboard {
