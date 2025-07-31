@@ -12,49 +12,53 @@
   font-style: normal;
 }
 
-
-:root{
-  --primary-color: #4F46E5;
+:root {
+  /* Colores Principales / Marca */
+  --primary-color: #4F46E5; /* Azul/Púrpura principal */
   --primary-hover-color: #3e38c4;
-  --secondary-color: #1D1B3B;
+  --secondary-color: #1D1B3B; /* Color oscuro principal, utilizado también como fondo */
   --secondary-hover-color: #2d2b5c;
   --accent-blue: #3182ce;
-  --accent-blue-light: #e0e7ff;
-  --danger-color: #ef4444;
+  --accent-blue-light: #e0e7ff; /* Fondo claro para acento azul */
+  --danger-color: #ef4444; /* Rojo para acciones de peligro */
 
-  --text-dark: #1a202c;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-subtle: #9ca3af;
+  /* Colores de Fondo */
+  --background-general: #f9fafb; /* Fondo general de la aplicación (anteriormente --background-color y --color-wg) */
+  --background-dark: #1D1B3B; /* Fondo oscuro (anteriormente --background-blue) */
+  --background-light-blue: #463fda; /* Azul claro de fondo (anteriormente --background-bluelight) */
+  --background-diamond: #E5E7EB; /* Color para fondos específicos o badges (anteriormente --background-diamond y --badge-natural-bg y --gradient-start-color) */
+  --card-background: #ffffff; /* Fondo para tarjetas y elementos blancos (anteriormente --card-background y --color-white) */
+  --danger-bg-light: rgba(239, 68, 68, 0.1); /* Fondo ligero para elementos de peligro */
 
-  --background-color: #f9fafb;
-  --card-background: #ffffff;
-  --badge-natural-bg: #E5E7EB;
+  /* Colores de Texto */
+  --text-dark: #1a202c; /* Texto muy oscuro */
+  --text-medium: #374151; /* Texto secundario */
+  --text-light: #6b7280; /* Texto gris claro (anteriormente --text-light y --color-graylight) */
+  --text-subtle: #9ca3af; /* Texto muy sutil/gris */
+  --text-gray: #475569; /* Gris (anteriormente --color-gray) */
+  --text-white: #ffffff; /* Blanco (si necesitas una variable específica para texto blanco) */
+  --text-danger: var(--danger-color); /* Color de texto para peligro */
 
+  /* Bordes y Divisores */
   --border-color: #e5e7eb;
   --divider-color: #e5e7eb;
 
+  /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-  --gradient-start-color: #E5E7EB;
+  /* Gradientes */
+  --gradient-start-color-full: var(--background-diamond); /* Renombrado para evitar conflicto si se usa --background-diamond directamente */
   --gradient-mid-color: var(--primary-color);
   --gradient-end-color: var(--secondary-color);
-
-
-  --background-blue: #1D1B3B;
-  --background-diamond: #E5E7EB;
-  --background-bluelight:#463fda;
-  --color-white: #ffffff;
-  --color-gray: #475569;
-  --color-graylight:#6b7280;
-  --color-wg:#f9fafb;
 }
-
 
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto como predeterminada */
+  color: var(--text-dark); /* Color de texto por defecto */
+  background-color: var(--background-general); /* Color de fondo por defecto */
 }
